@@ -71,11 +71,11 @@ export default function Footer() {
                 773.728.0652
               </a>
               <a
-                href="mailto:service@stellarpropertygroup.com"
+                href="mailto:mirsad@stellarpropertygroup.com"
                 className="flex items-center gap-3 text-sm text-navy-300 hover:text-gold-400 transition-colors"
               >
                 <Mail className="w-4 h-4 text-gold-400 shrink-0" />
-                service@stellarpropertygroup.com
+                mirsad@stellarpropertygroup.com
               </a>
             </div>
           </div>

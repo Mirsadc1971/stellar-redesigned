@@ -13,7 +13,7 @@ type ActiveTab = 'violation' | 'nomination' | null;
 const faqs = [
   {
     q: 'How do I make a payment?',
-    a: 'Log in to the AppFolio resident portal to make one-time or recurring payments via bank transfer or credit card. If you need portal access, contact our office at 773.728.0652 or email service@stellarpropertygroup.com.',
+    a: 'Log in to the AppFolio resident portal to make one-time or recurring payments via bank transfer or credit card. If you need portal access, contact our office at 773.728.0652 or email mirsad@stellarpropertygroup.com.',
   },
   {
     q: 'How do I submit a maintenance request?',
@@ -138,7 +138,7 @@ export default function Resources() {
                 return (
                   <a
                     key={title}
-                    href="https://stellarpropertygrp.appfolio.com/connect/"
+                    href="https://stellarpropertygroup.appfolio.com/connect/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100"

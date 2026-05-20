@@ -139,7 +139,7 @@ export function ViolationReportForm() {
       {submitStatus === 'error' && (
         <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
           <p className="font-semibold">Oops! Something went wrong.</p>
-          <p className="text-sm">Please try again or contact us directly at service@stellarpropertygroup.com</p>
+          <p className="text-sm">Please try again or contact us directly at mirsad@stellarpropertygroup.com</p>
         </div>
       )}
 
@@ -449,7 +449,7 @@ export function ViolationReportForm() {
         </button>
 
         <p className="text-sm text-gray-600 text-center">
-          * Required fields. Form will be submitted to service@stellarpropertygroup.com
+          * Required fields. Form will be submitted to mirsad@stellarpropertygroup.com
         </p>
       </form>
 

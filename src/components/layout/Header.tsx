@@ -161,7 +161,7 @@ export default function Header() {
 
             {/* CTA */}
             <a
-              href="https://stellarpropertygrp.appfolio.com/connect/"
+              href="https://stellarpropertygroup.appfolio.com/connect/"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-4 inline-flex items-center gap-2 px-5 py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-900 text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg"
@@ -256,7 +256,7 @@ export default function Header() {
 
           <div className="pt-2">
             <a
-              href="https://stellarpropertygrp.appfolio.com/connect/"
+              href="https://stellarpropertygroup.appfolio.com/connect/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full px-5 py-3 bg-gold-500 hover:bg-gold-600 text-navy-900 text-sm font-semibold rounded-lg transition-all duration-200"

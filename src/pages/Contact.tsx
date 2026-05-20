@@ -25,8 +25,8 @@ const contactCards = [
   {
     icon: Mail,
     title: 'Email',
-    lines: ['service@stellarpropertygroup.com'],
-    href: 'mailto:service@stellarpropertygroup.com',
+    lines: ['mirsad@stellarpropertygroup.com'],
+    href: 'mailto:mirsad@stellarpropertygroup.com',
     linkLabel: 'Send Email',
     sub: 'We respond within 24 hours',
   },
@@ -45,7 +45,7 @@ export default function Contact() {
         <title>Contact Stellar Property Group | Get a Free Property Management Quote</title>
         <meta
           name="description"
-          content="Contact Stellar Property Group for a free property management quote. Located at 5107 N Western Ave, Suite 1S, Chicago, IL 60625. Call 773.728.0652 or email service@stellarpropertygroup.com."
+          content="Contact Stellar Property Group for a free property management quote. Located at 5107 N Western Ave, Suite 1S, Chicago, IL 60625. Call 773.728.0652 or email mirsad@stellarpropertygroup.com."
         />
         <link rel="canonical" href="https://stellarpropertygroup.com/contact" />
       </Helmet>
@@ -141,7 +141,7 @@ export default function Contact() {
                       Access your owner/resident portal to make payments, submit requests, and view documents.
                     </p>
                     <a
-                      href="https://stellarpropertygrp.appfolio.com/connect/"
+                      href="https://stellarpropertygroup.appfolio.com/connect/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 bg-gold-500 hover:bg-gold-400 text-navy-950 font-semibold px-4 py-2 rounded-lg transition-all duration-200 text-xs"

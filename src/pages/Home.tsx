@@ -40,7 +40,7 @@ export default function Home() {
     "description": "Professional property management services for Chicago and North Shore communities. Specializing in condominium, HOA, and townhome management since 2007.",
     "url": "https://stellarpropertygroup.com",
     "telephone": "+1-773-728-0652",
-    "email": "service@stellarpropertygroup.com",
+    "email": "mirsad@stellarpropertygroup.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "5107 N Western Ave, Suite 1S",
@@ -419,7 +419,7 @@ export default function Home() {
                   {[
                     { icon: MapPin, title: 'Office', lines: ['5107 N Western Ave, Suite 1S', 'Chicago, Illinois 60625'] },
                     { icon: Phone, title: 'Phone', lines: ['773.728.0652'], href: 'tel:7737280652', sub: '24/7 Emergency Line' },
-                    { icon: Building2, title: 'Email', lines: ['service@stellarpropertygroup.com'], href: 'mailto:service@stellarpropertygroup.com' },
+                    { icon: Building2, title: 'Email', lines: ['mirsad@stellarpropertygroup.com'], href: 'mailto:mirsad@stellarpropertygroup.com' },
                   ].map(({ icon: Icon, title, lines, href, sub }) => (
                     <div key={title} className="flex items-start gap-4 bg-white/[0.06] border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors duration-200">
                       <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
