@@ -108,7 +108,7 @@ export default function NeighborhoodPage() {
         <title>Property Management in {neighborhood.name} | Stellar Property Group</title>
         <meta
           name="description"
-          content={`Professional condominium, HOA, and townhome management in ${neighborhood.name}, Chicago. Trusted by local boards for 20+ years. Get a free quote today.`}
+          content={`Professional condominium, HOA, and townhome management in ${neighborhood.name}, Chicago. Trusted by local boards for 29+ years. Get a free quote today.`}
         />
         <meta
           name="keywords"

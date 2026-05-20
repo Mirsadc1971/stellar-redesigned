@@ -28,7 +28,7 @@ export default function FinancialManagement() {
     <>
       <SEOHead
         title="Association Financial Management | Stellar Property Group"
-        description="Expert financial management for Chicago-area community associations. Budgeting, reserve studies, assessment collection, financial reporting, and audit preparation. Trusted by 50+ communities since 2007."
+        description="Expert financial management for Chicago-area community associations. Budgeting, reserve studies, assessment collection, financial reporting, and audit preparation. Trusted by 42 communities."
       />
 
       {/* Hero Section */}
@@ -71,7 +71,7 @@ export default function FinancialManagement() {
                 Community association finances are not like any other business. You are managing shared resources on behalf of homeowners who expect every dollar to be spent wisely, reported transparently, and planned strategically. At Stellar Property Group, our financial management services are designed specifically for the unique demands of condo, HOA, and townhome associations in the Chicago area.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Our accounting team processes thousands of transactions monthly across more than 50 managed communities. We use industry-leading property management software to maintain real-time financial records, generate accurate reports, and provide your board with the financial visibility needed to govern effectively. Every invoice is verified, every payment is documented, and every financial report is delivered on schedule.
+                Our accounting team processes thousands of transactions monthly across 42 managed communities. We use industry-leading property management software to maintain real-time financial records, generate accurate reports, and provide your board with the financial visibility needed to govern effectively. Every invoice is verified, every payment is documented, and every financial report is delivered on schedule.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 From developing realistic annual budgets to conducting comprehensive reserve studies, from collecting assessments to preparing for annual audits, our financial management services cover the full spectrum of association accounting. We do not just track numbers; we provide the analysis and recommendations that help your board make smarter financial decisions for the community future.

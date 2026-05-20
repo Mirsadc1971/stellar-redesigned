@@ -52,10 +52,10 @@ const credentials = [
 ];
 
 const stats = [
-  { value: '50+', label: 'Communities', sub: 'Under management' },
+  { value: '42', label: 'Communities', sub: 'Under management' },
   { value: '2,450+', label: 'Units', sub: 'Across Chicagoland' },
   { value: '96%', label: 'Retention Rate', sub: 'Client satisfaction' },
-  { value: '18+', label: 'Years', sub: 'Local expertise' },
+  { value: '29+', label: 'Years', sub: 'Local expertise' },
 ];
 
 export default function About() {
@@ -65,7 +65,7 @@ export default function About() {
         <title>About Stellar Property Group | Chicago Property Management Since 2007</title>
         <meta
           name="description"
-          content="Learn about Stellar Property Group — Chicago's trusted property management company since 2007. 50+ communities, 2,450+ units, and a 96% client retention rate. CAI, IREM, IDFPR, and CCIM certified."
+          content="Learn about Stellar Property Group — Chicago's trusted property management company. 42 communities, 2,450+ units, and a 96% client retention rate. CAI, IREM, IDFPR, and CCIM certified."
         />
         <link rel="canonical" href="https://stellarpropertygroup.com/about" />
       </Helmet>
@@ -103,13 +103,13 @@ export default function About() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 mb-3">Our Story</p>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-900 leading-tight mb-6">
-                From a Small Firm to 50+ Communities
+                From a Small Firm to 42 Communities
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-5">
                 Stellar Property Group was founded in 2007 with a clear mission: deliver property management that Chicago condo boards, HOAs, and townhome associations actually deserve. At the time, most firms treated community management as a side business. We made it our only business.
               </p>
               <p className="text-slate-600 leading-relaxed mb-5">
-                Starting with a handful of Chicago North Side associations, we grew through referrals and results — not marketing gimmicks. Today, we manage more than 50 communities and 2,450 units across Chicago and the North Shore, with a 96% client retention rate that speaks louder than any advertisement.
+                Starting with a handful of Chicago North Side associations, we grew through referrals and results — not marketing gimmicks. Today, we manage 42 communities and 2,450 units across Chicago and the North Shore, with a 96% client retention rate that speaks louder than any advertisement.
               </p>
               <p className="text-slate-600 leading-relaxed mb-8">
                 Our growth has always been intentional. We only take on communities we can serve exceptionally, assigning a dedicated manager who knows every building, every board member, and every vendor by name. That personal approach is what sets us apart from national firms that treat your community as a line item.

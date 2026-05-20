@@ -17,7 +17,7 @@ export default function ServiceAreas() {
     '@type': 'LocalBusiness',
     name: 'Stellar Property Group',
     description:
-      'Professional property management serving 72 Chicago neighborhoods. Condominium, HOA, and townhome management.',
+      'Professional property management serving 24 Chicago neighborhoods. Condominium, HOA, and townhome management.',
     url: 'https://www.stellarpropertygroup.com/service-areas',
     telephone: '+1-773-728-0652',
     address: {
@@ -40,7 +40,7 @@ export default function ServiceAreas() {
         <title>Chicago Property Management Service Areas | Stellar Property Group</title>
         <meta
           name="description"
-          content="Stellar Property Group provides professional condominium, HOA, and townhome management across 72 Chicago neighborhoods. Find your neighborhood and get a free quote."
+          content="Stellar Property Group provides professional condominium, HOA, and townhome management across 24 Chicago neighborhoods. Find your neighborhood and get a free quote."
         />
         <meta
           name="keywords"
@@ -150,15 +150,15 @@ export default function ServiceAreas() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-blue-700 mb-2">{neighborhoods.length}</div>
+              <div className="text-4xl font-bold text-blue-700 mb-2">24</div>
               <div className="text-gray-600 font-medium">Neighborhoods Served</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-700 mb-2">20+</div>
+              <div className="text-4xl font-bold text-blue-700 mb-2">29+</div>
               <div className="text-gray-600 font-medium">Years Experience</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-700 mb-2">500+</div>
+              <div className="text-4xl font-bold text-blue-700 mb-2">42</div>
               <div className="text-gray-600 font-medium">Associations Managed</div>
             </div>
             <div>

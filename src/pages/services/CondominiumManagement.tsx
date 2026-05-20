@@ -28,7 +28,7 @@ export default function CondominiumManagement() {
     <>
       <SEOHead
         title="Condominium Management Services in Chicago | Stellar Property Group"
-        description="Full-service condominium management in Chicago and the North Shore. Illinois Condo Property Act compliance, board governance, financial oversight, and 24/7 emergency support. Serving 50+ communities since 2007."
+        description="Full-service condominium management in Chicago and the North Shore. Illinois Condo Property Act compliance, board governance, financial oversight, and 24/7 emergency support. Serving 42 communities."
       />
 
       {/* Hero Section */}
@@ -71,7 +71,7 @@ export default function CondominiumManagement() {
                 Managing a condominium association in Illinois requires deep knowledge of state-specific regulations, strong financial stewardship, and the ability to balance the needs of diverse unit owners. Since 2007, Stellar Property Group has provided Chicago-area condominiums with the professional management they need to protect property values, maintain common elements, and foster thriving residential communities.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Our team holds certifications from the Community Associations Institute (CAI) and the Institute of Real Estate Management (IREM), ensuring your association benefits from industry best practices and cutting-edge management strategies. We currently serve over 50 communities across Chicago and the North Shore, maintaining a 96% client retention rate that reflects our commitment to excellence.
+                Our team holds certifications from the Community Associations Institute (CAI) and the Institute of Real Estate Management (IREM), ensuring your association benefits from industry best practices and cutting-edge management strategies. We currently serve 42 communities across Chicago and the North Shore, maintaining a 96% client retention rate that reflects our commitment to excellence.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Whether your building has 10 units or 500, our approach is the same: proactive management that prevents problems before they arise, transparent communication that keeps owners informed, and financial planning that positions your association for long-term stability. We assign a dedicated property manager to each community so you always have a knowledgeable point of contact who understands your building inside and out.

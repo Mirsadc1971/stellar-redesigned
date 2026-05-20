@@ -61,7 +61,7 @@ const services: ServiceItem[] = [
 const differentiators = [
   {
     icon: Star,
-    title: '18+ Years of Chicago Expertise',
+    title: '29+ Years of Chicago Expertise',
     description: 'Deep knowledge of Illinois condo law, Chicago building codes, and North Shore market dynamics — so nothing catches your community off guard.',
   },
   {
@@ -205,7 +205,7 @@ export default function Services() {
             Ready to Get Started?
           </h2>
           <p className="text-lg text-navy-200 mb-10 max-w-2xl mx-auto">
-            Discover why 50+ Chicago-area communities trust Stellar Property
+            Discover why 42 Chicago-area communities trust Stellar Property
             Group. Reach out today for a free, no-obligation consultation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

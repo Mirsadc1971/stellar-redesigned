@@ -18,7 +18,7 @@ const services = [
 ];
 
 const whyUs = [
-  { title: '18+ Years of Local Expertise', desc: 'Deep understanding of Illinois condo law, Chicago regulations, and North Shore market nuances.' },
+  { title: '29+ Years of Local Expertise', desc: 'Deep understanding of Illinois condo law, Chicago regulations, and North Shore market nuances.' },
   { title: 'CAI & IREM Certified Professionals', desc: 'Our team holds industry-leading credentials including CAM, PCAM, CPM, and CCIM designations.' },
   { title: '24/7 Emergency Response', desc: 'Round-the-clock availability for urgent issues — real people answer, not voicemail.' },
   { title: 'Guaranteed Cost Savings', desc: 'Our vendor network and negotiating leverage routinely reduces operating costs for associations.' },
@@ -61,7 +61,7 @@ export default function Home() {
     <>
       <Helmet>
         <title>Stellar Property Group | Chicago's Premier Property Management Company</title>
-        <meta name="description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations. 50+ communities served, 96% retention rate. Trusted since 2007. Get a free quote." />
+        <meta name="description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations. 42 communities served, 96% retention rate. Get a free quote." />
         <link rel="canonical" href="https://stellarpropertygroup.com" />
         <meta property="og:title" content="Stellar Property Group | Chicago Property Management" />
         <meta property="og:description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations since 2007." />
@@ -96,7 +96,7 @@ export default function Home() {
                 <span className="text-gold-400">Elevated.</span>
               </h1>
               <p className="text-lg text-white/65 leading-relaxed mb-10 max-w-lg">
-                Specializing in condominium, HOA, and townhome management with over 18 years of local expertise. Trusted by 50+ communities across Chicagoland.
+                Specializing in condominium, HOA, and townhome management with over 29 years of local expertise. Trusted by 42 communities across Chicagoland.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -118,10 +118,10 @@ export default function Home() {
 
             <div className="grid grid-cols-2 gap-4 animate-fade-up delay-200">
               {[
-                { value: '50+', label: 'Communities', sub: 'Under management' },
+                { value: '42', label: 'Communities', sub: 'Under management' },
                 { value: '2,450+', label: 'Units', sub: 'Across Chicago' },
                 { value: '96%', label: 'Retention', sub: 'Client satisfaction' },
-                { value: '18+', label: 'Years', sub: 'Local expertise' },
+                { value: '29+', label: 'Years', sub: 'Local expertise' },
               ].map(({ value, label, sub }) => (
                 <div
                   key={label}
@@ -227,11 +227,11 @@ export default function Home() {
                   <div className="text-xs text-slate-500 font-medium mt-0.5">Retention Rate</div>
                 </div>
                 <div className="text-center flex-1 border-r border-slate-100 pr-5">
-                  <div className="text-2xl font-bold text-navy-900">50+</div>
+                  <div className="text-2xl font-bold text-navy-900">42</div>
                   <div className="text-xs text-slate-500 font-medium mt-0.5">Communities</div>
                 </div>
                 <div className="text-center flex-1">
-                  <div className="text-2xl font-bold text-navy-900">18yr</div>
+                  <div className="text-2xl font-bold text-navy-900">29yr</div>
                   <div className="text-xs text-slate-500 font-medium mt-0.5">Experience</div>
                 </div>
               </div>
@@ -287,7 +287,7 @@ export default function Home() {
               </div>
               <div className="mt-6 pt-6 border-t border-white/10">
                 <Link to="/service-areas" className="text-gold-400 text-sm font-medium hover:text-gold-500 transition-colors inline-flex items-center gap-1">
-                  View all 72 neighborhoods <ChevronRight className="w-3.5 h-3.5" />
+                  View all 24 neighborhoods <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
