@@ -61,7 +61,7 @@ export default function Home() {
     <>
       <Helmet>
         <title>Stellar Property Group | Chicago's Premier Property Management Company</title>
-        <meta name="description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations. 42 communities served, 96% retention rate. Get a free quote." />
+        <meta name="description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations. 42 associations served, 96% retention rate. Trusted since 2007. Get a free quote." />
         <link rel="canonical" href="https://stellarpropertygroup.com" />
         <meta property="og:title" content="Stellar Property Group | Chicago Property Management" />
         <meta property="og:description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations since 2007." />
@@ -96,7 +96,7 @@ export default function Home() {
                 <span className="text-gold-400">Elevated.</span>
               </h1>
               <p className="text-lg text-white/65 leading-relaxed mb-10 max-w-lg">
-                Specializing in condominium, HOA, and townhome management with over 29 years of local expertise. Trusted by 42 communities across Chicagoland.
+                Specializing in condominium, HOA, and townhome management with over 29 years of local expertise. Trusted by 42 associations across Chicagoland.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -118,7 +118,7 @@ export default function Home() {
 
             <div className="grid grid-cols-2 gap-4 animate-fade-up delay-200">
               {[
-                { value: '42', label: 'Communities', sub: 'Under management' },
+                { value: '42', label: 'Associations', sub: 'Under management' },
                 { value: '2,450+', label: 'Units', sub: 'Across Chicago' },
                 { value: '96%', label: 'Retention', sub: 'Client satisfaction' },
                 { value: '29+', label: 'Years', sub: 'Local expertise' },
@@ -228,7 +228,7 @@ export default function Home() {
                 </div>
                 <div className="text-center flex-1 border-r border-slate-100 pr-5">
                   <div className="text-2xl font-bold text-navy-900">42</div>
-                  <div className="text-xs text-slate-500 font-medium mt-0.5">Communities</div>
+                  <div className="text-xs text-slate-500 font-medium mt-0.5">Associations</div>
                 </div>
                 <div className="text-center flex-1">
                   <div className="text-2xl font-bold text-navy-900">29yr</div>
