@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Building2, ChevronDown, Menu, X, ExternalLink, ArrowRight, Phone } from 'lucide-react';
+import { Building2, ChevronDown, Menu, X, ExternalLink, Phone } from 'lucide-react';
 
 const services = [
   { name: 'Condominium Management', href: '/services/condominium-management' },
@@ -13,11 +13,10 @@ const services = [
 ];
 
 const navLinks = [
-  { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services', hasDropdown: true },
   { name: 'Service Areas', href: '/service-areas' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Resources', href: '/resources' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -143,24 +142,15 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
-            <a
-              href={PORTAL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-600 transition-colors hover:text-brand-700"
-            >
-              Make a Payment
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lift"
-            >
-              Get a Quote
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <a
+            href={PORTAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-1.5 rounded-xl border border-ink-200 px-5 py-2.5 text-sm font-semibold text-ink-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:text-brand-700 hover:shadow-soft lg:inline-flex"
+          >
+            Make a Payment
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -239,32 +229,23 @@ export default function Header() {
             )
           )}
 
-          <div className="space-y-2.5 pt-3">
-            <Link
-              to="/contact"
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+          <div className="flex gap-2.5 pt-3">
+            <a
+              href={PORTAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-ink-200 px-4 py-3 text-sm font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:text-brand-700"
             >
-              Get a Free Quote
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <div className="flex gap-2.5">
-              <a
-                href={PORTAL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-ink-200 px-4 py-3 text-sm font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:text-brand-700"
-              >
-                Make a Payment
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-              <a
-                href="tel:7737280652"
-                className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-ink-200 px-4 py-3 text-sm font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:text-brand-700"
-              >
-                <Phone className="h-3.5 w-3.5" />
-                Call Us
-              </a>
-            </div>
+              Make a Payment
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+            <a
+              href="tel:7737280652"
+              className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-ink-200 px-4 py-3 text-sm font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:text-brand-700"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              Call Us
+            </a>
           </div>
         </div>
       </div>
