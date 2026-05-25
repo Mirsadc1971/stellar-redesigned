@@ -92,12 +92,12 @@ export default function Header() {
               alt="Stellar Property Management logo"
               className="h-11 w-11 transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="leading-tight">
-              <span className="block font-display text-lg font-extrabold tracking-tight text-ink-900">
-                Stellar Property Management
+            <span className="leading-none">
+              <span className="block font-serif text-[1.6rem] font-bold leading-none text-brand-700">
+                Stellar
               </span>
-              <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-600">
-                Chicago, Illinois
+              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-500">
+                Property Management
               </span>
             </span>
           </Link>

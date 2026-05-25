@@ -44,12 +44,12 @@ export default function Footer() {
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-soft">
                 <img src="/logo-icon.svg" alt="Stellar Property Management logo" className="h-9 w-9" />
               </span>
-              <span className="leading-tight">
-                <span className="block font-display text-lg font-extrabold tracking-tight text-white">
-                  Stellar Property Management
+              <span className="leading-none">
+                <span className="block font-serif text-[1.6rem] font-bold leading-none text-white">
+                  Stellar
                 </span>
-                <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-300">
-                  Chicago, Illinois
+                <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-300">
+                  Property Management
                 </span>
               </span>
             </Link>
