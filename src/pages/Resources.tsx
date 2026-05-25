@@ -125,7 +125,7 @@ export default function Resources() {
                 return (
                   <a
                     key={title}
-                    href="https://stellarpropertygroup.appfolio.com/connect/"
+                    href="https://stellarpropertygrp.appfolio.com/oportal"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cardClass}

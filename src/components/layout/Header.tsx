@@ -20,7 +20,7 @@ const navLinks = [
   { name: 'Contact', href: '/contact' },
 ];
 
-const PORTAL_URL = 'https://stellarpropertygroup.appfolio.com/connect/';
+const PORTAL_URL = 'https://stellarpropertygrp.appfolio.com/oportal';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
