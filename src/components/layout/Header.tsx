@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Building2, ChevronDown, Menu, X, ExternalLink, Phone } from 'lucide-react';
+import { ChevronDown, Menu, X, ExternalLink, Phone } from 'lucide-react';
 
 const PORTAL_URL = 'https://stellarpropertygrp.appfolio.com/oportal';
 
@@ -87,9 +87,11 @@ export default function Header() {
       <div className="container-x">
         <div className="flex h-20 items-center justify-between gap-4">
           <Link to="/" className="group flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 shadow-lift transition-transform duration-300 group-hover:scale-105">
-              <Building2 className="h-6 w-6 text-white" />
-            </span>
+            <img
+              src="/logo-icon.svg"
+              alt="Stellar Property Management logo"
+              className="h-11 w-11 transition-transform duration-300 group-hover:scale-105"
+            />
             <span className="leading-tight">
               <span className="block font-display text-lg font-extrabold tracking-tight text-ink-900">
                 Stellar Property Management

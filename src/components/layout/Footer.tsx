@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Building2, MapPin, Phone, Mail, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 const serviceLinks = [
   { name: 'Condominium Management', href: '/services/condominium-management' },
@@ -41,8 +41,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 pb-12 pt-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <Link to="/" className="mb-5 flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
-                <Building2 className="h-6 w-6 text-brand-300" />
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-soft">
+                <img src="/logo-icon.svg" alt="Stellar Property Management logo" className="h-9 w-9" />
               </span>
               <span className="leading-tight">
                 <span className="block font-display text-lg font-extrabold tracking-tight text-white">
