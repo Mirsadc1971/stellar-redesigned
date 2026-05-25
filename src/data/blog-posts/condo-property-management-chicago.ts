@@ -10,7 +10,7 @@ export const condoPropertyManagementChicago = {
   readTime: '8 min read',
   excerpt:
     'Serving on a condo board in Chicago is a significant responsibility. Learn what to expect from a professional property management company and how to evaluate the right partner for your association.',
-  featuredImage: '/images/blog/condo-management-chicago.jpg',
+  featuredImage: '/blog/condominium-property-management-chicago.svg',
   content: `
 <p>Serving on the board of a condominium association in Chicago is a significant responsibility. Board members are entrusted with protecting homeowners' investments, maintaining common areas, ensuring legal compliance, and fostering a well-run community. For many volunteer board members, the scope of these duties quickly becomes overwhelming — especially in a city as complex and regulated as Chicago. That is precisely why most associations turn to a professional <a href="/services/condominium-management">condominium property management company</a> to handle the day-to-day operations and long-term strategic planning their buildings require.</p>
 
