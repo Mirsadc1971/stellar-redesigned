@@ -8,18 +8,20 @@ export default {
         display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // Trust & Authority palette — deep, authoritative trust-navy
+        // (per UI UX Pro Max skill recommendation for professional / real-estate services)
         brand: {
-          50: '#eff5ff',
-          100: '#dbe8fe',
-          200: '#bfd6fe',
-          300: '#93b9fd',
-          400: '#6094fa',
-          500: '#3b71f6',
-          600: '#2556ea',
-          700: '#1d43d7',
-          800: '#1f3aae',
-          900: '#1e3589',
-          950: '#172153',
+          50: '#eef2fb',
+          100: '#d9e2f5',
+          200: '#b9c9ec',
+          300: '#8ba5dd',
+          400: '#5a79c9',
+          500: '#3a59b4',
+          600: '#1e40af',
+          700: '#1c3992',
+          800: '#1c3175',
+          900: '#1c2b5d',
+          950: '#121a3c',
         },
         gold: {
           50: '#fdf8ed',
@@ -51,7 +53,7 @@ export default {
         soft: '0 1px 3px 0 rgba(22,28,40,0.06), 0 1px 2px -1px rgba(22,28,40,0.04)',
         card: '0 1px 2px 0 rgba(22,28,40,0.04), 0 14px 30px -12px rgba(22,28,40,0.12)',
         'card-hover': '0 2px 6px 0 rgba(22,28,40,0.05), 0 30px 54px -14px rgba(22,28,40,0.24)',
-        lift: '0 12px 26px -10px rgba(37,86,234,0.45)',
+        lift: '0 12px 26px -10px rgba(30,64,175,0.45)',
         ring: '0 0 0 1px rgba(22,28,40,0.06)',
       },
       maxWidth: {

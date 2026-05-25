@@ -21,7 +21,7 @@
   }
 
   ::selection {
-    background-color: #2556ea;
+    background-color: #1e40af;
     color: #ffffff;
   }
 }
@@ -81,8 +81,8 @@
 
   .bg-grid {
     background-image:
-      linear-gradient(rgba(37,86,234,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(37,86,234,0.06) 1px, transparent 1px);
+      linear-gradient(rgba(30,64,175,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,64,175,0.06) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .bg-grid-light {
