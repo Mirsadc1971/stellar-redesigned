@@ -20,26 +20,35 @@ interface BoardNominationFormData {
   acknowledged_attendance: boolean;
 }
 
-export function BoardNominationForm() {
-  const [formData, setFormData] = useState<BoardNominationFormData>({
-    nominee_name: '',
-    nominee_email: '',
-    nominee_phone: '',
-    nominee_unit_address: '',
-    years_at_property: '',
-    ownership_type: 'owner',
-    current_employment: '',
-    previous_board_experience: '',
-    relevant_skills: '',
-    motivation: '',
-    time_commitment: 'yes',
-    references: '',
-    signature: '',
-    acknowledged_terms: false,
-    acknowledged_commitment: false,
-    acknowledged_attendance: false
-  });
+// All board nomination applications are delivered to this inbox via FormSubmit.co.
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/mirsad@stellarpropertygroup.com';
 
+const inputClass =
+  'w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-sm text-ink-800 placeholder:text-ink-300 transition-all focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100';
+const labelClass = 'mb-2 flex items-center gap-2 text-sm font-semibold text-ink-800';
+const sectionTitleClass = 'mb-4 font-display text-lg font-bold text-ink-900';
+
+const initialState: BoardNominationFormData = {
+  nominee_name: '',
+  nominee_email: '',
+  nominee_phone: '',
+  nominee_unit_address: '',
+  years_at_property: '',
+  ownership_type: 'owner',
+  current_employment: '',
+  previous_board_experience: '',
+  relevant_skills: '',
+  motivation: '',
+  time_commitment: 'yes',
+  references: '',
+  signature: '',
+  acknowledged_terms: false,
+  acknowledged_commitment: false,
+  acknowledged_attendance: false,
+};
+
+export function BoardNominationForm() {
+  const [formData, setFormData] = useState<BoardNominationFormData>({ ...initialState });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submittedData, setSubmittedData] = useState<BoardNominationFormData | null>(null);
@@ -54,69 +63,30 @@ export function BoardNominationForm() {
     setSubmitStatus('idle');
 
     try {
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-
-      if (!accessKey) {
-        throw new Error('Web3Forms access key not configured');
-      }
-
-      const submissionData = {
-        access_key: accessKey,
-        nominee_name: formData.nominee_name,
-        nominee_email: formData.nominee_email,
-        nominee_phone: formData.nominee_phone,
-        nominee_unit_address: formData.nominee_unit_address,
-        years_at_property: formData.years_at_property,
-        ownership_type: formData.ownership_type,
-        current_employment: formData.current_employment,
-        previous_board_experience: formData.previous_board_experience,
-        relevant_skills: formData.relevant_skills,
-        motivation: formData.motivation,
-        time_commitment: formData.time_commitment,
-        references: formData.references,
-        signature: formData.signature,
-        acknowledged_terms: formData.acknowledged_terms ? 'Yes' : 'No',
-        acknowledged_commitment: formData.acknowledged_commitment ? 'Yes' : 'No',
-        acknowledged_attendance: formData.acknowledged_attendance ? 'Yes' : 'No',
-        subject: `Board Nomination Application - ${formData.nominee_name}`,
-        from_name: formData.nominee_name,
-        replyto: formData.nominee_email,
-      };
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Accept: 'application/json',
         },
-        body: JSON.stringify(submissionData),
+        body: JSON.stringify({
+          ...formData,
+          acknowledged_terms: formData.acknowledged_terms ? 'Yes' : 'No',
+          acknowledged_commitment: formData.acknowledged_commitment ? 'Yes' : 'No',
+          acknowledged_attendance: formData.acknowledged_attendance ? 'Yes' : 'No',
+          _subject: `Board Nomination Application — ${formData.nominee_name}`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: formData.nominee_email,
+        }),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
         setSubmittedData({ ...formData });
-        setFormData({
-          nominee_name: '',
-          nominee_email: '',
-          nominee_phone: '',
-          nominee_unit_address: '',
-          years_at_property: '',
-          ownership_type: 'owner',
-          current_employment: '',
-          previous_board_experience: '',
-          relevant_skills: '',
-          motivation: '',
-          time_commitment: 'yes',
-          references: '',
-          signature: '',
-          acknowledged_terms: false,
-          acknowledged_commitment: false,
-          acknowledged_attendance: false
-        });
+        setFormData({ ...initialState });
       } else {
-        const errorData = await response.text();
-        console.error('Form submission failed:', response.status, errorData);
-        throw new Error(`Form submission failed: ${response.status}`);
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -126,563 +96,551 @@ export function BoardNominationForm() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value, type } = e.target;
 
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      setFormData(prev => ({ ...prev, [name]: checked }));
+      setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
+  const responsibilities = [
+    'Attend regular board meetings (typically monthly)',
+    'Review financial reports and budgets',
+    'Make decisions on maintenance and improvements',
+    'Address owner concerns and communications',
+    'Oversee compliance with governing documents',
+    'Work with property management company',
+  ];
+
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8">
-      <div className="mb-8">
-        <div className="flex items-center justify-center mb-4">
-          <Users className="w-12 h-12 text-blue-600" />
-        </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Board Member Nomination Application</h2>
-        <p className="text-center text-gray-600 mb-4">Apply to serve on your condominium or HOA board</p>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <p className="text-sm text-gray-700">
-            <strong>Note:</strong> Board positions are typically determined by percentage of votes received during elections. This application helps the nominating committee evaluate candidates for board service.
+    <div className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-card">
+      <div className="border-b border-ink-100 bg-gradient-to-b from-brand-50 to-white p-8 text-center">
+        <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-100 text-brand-600">
+          <Users className="h-7 w-7" />
+        </span>
+        <h2 className="font-display text-2xl font-extrabold text-ink-900">
+          Board Member Nomination Application
+        </h2>
+        <p className="mt-1.5 text-sm text-ink-500">
+          Apply to serve on your condominium or HOA board
+        </p>
+        <div className="mt-5 rounded-xl border border-brand-100 bg-brand-50 p-4 text-left">
+          <p className="text-sm text-ink-700">
+            <strong className="font-semibold text-ink-900">Note:</strong> Board positions are
+            typically determined by percentage of votes received during elections. This
+            application helps the nominating committee evaluate candidates for board service.
           </p>
         </div>
       </div>
 
-      {submitStatus === 'success' && submittedData && (
-        <div className="mb-6 space-y-4">
-          <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-            <p className="font-semibold">Your board nomination application has been submitted successfully!</p>
-            <p className="text-sm">The nominating committee will review your application and contact you regarding next steps.</p>
-          </div>
-
-          <div className="flex justify-center">
-            <button
-              onClick={handlePrint}
-              className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors print:hidden"
-            >
-              <Printer className="w-5 h-5" />
-              <span>Print Application Copy</span>
-            </button>
-          </div>
-
-          {/* Printable version */}
-          <div className="hidden print:block bg-white p-8">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Board Member Nomination Application</h1>
-              <p className="text-gray-600">Stellar Property Group</p>
-              <p className="text-sm text-gray-500">Submitted on {new Date().toLocaleDateString()}</p>
+      <div className="p-8">
+        {submitStatus === 'success' && submittedData && (
+          <div className="mb-6 space-y-4">
+            <div className="rounded-xl border border-green-200 bg-green-50 p-4 text-green-800">
+              <p className="font-semibold">
+                Your board nomination application has been submitted successfully!
+              </p>
+              <p className="text-sm">
+                The nominating committee will review your application and contact you regarding
+                next steps.
+              </p>
             </div>
 
-            <div className="space-y-6">
-              <div className="border-b border-gray-300 pb-4">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Nominee Information</h2>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="font-semibold text-gray-700">Full Name:</p>
-                    <p className="text-gray-900">{submittedData.nominee_name}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Email:</p>
-                    <p className="text-gray-900">{submittedData.nominee_email}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Phone:</p>
-                    <p className="text-gray-900">{submittedData.nominee_phone}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Unit Address:</p>
-                    <p className="text-gray-900">{submittedData.nominee_unit_address}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Years at Property:</p>
-                    <p className="text-gray-900">{submittedData.years_at_property}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Ownership Status:</p>
-                    <p className="text-gray-900">{submittedData.ownership_type}</p>
-                  </div>
-                </div>
+            <div className="flex justify-center">
+              <button
+                onClick={handlePrint}
+                className="flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-700 print:hidden"
+              >
+                <Printer className="h-5 w-5" />
+                <span>Print Application Copy</span>
+              </button>
+            </div>
+
+            <div className="hidden bg-white p-8 print:block">
+              <div className="mb-8 text-center">
+                <h1 className="text-3xl font-bold text-gray-900">
+                  Board Member Nomination Application
+                </h1>
+                <p className="text-gray-600">Stellar Property Group</p>
+                <p className="text-sm text-gray-500">
+                  Submitted on {new Date().toLocaleDateString()}
+                </p>
               </div>
 
-              <div className="border-b border-gray-300 pb-4">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Professional Background</h2>
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <p className="font-semibold text-gray-700">Current Employment/Profession:</p>
-                    <p className="text-gray-900">{submittedData.current_employment || 'Not provided'}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Previous Board or Leadership Experience:</p>
-                    <p className="text-gray-900 whitespace-pre-wrap">{submittedData.previous_board_experience || 'Not provided'}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Relevant Skills & Expertise:</p>
-                    <p className="text-gray-900 whitespace-pre-wrap">{submittedData.relevant_skills}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border-b border-gray-300 pb-4">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Motivation & Commitment</h2>
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <p className="font-semibold text-gray-700">Why do you want to serve on the board?</p>
-                    <p className="text-gray-900 whitespace-pre-wrap">{submittedData.motivation}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">Can you commit to attending monthly board meetings?</p>
-                    <p className="text-gray-900">{submittedData.time_commitment}</p>
-                  </div>
-                  {submittedData.references && (
+              <div className="space-y-6">
+                <div className="border-b border-gray-300 pb-4">
+                  <h2 className="mb-3 text-xl font-bold text-gray-900">Nominee Information</h2>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <p className="font-semibold text-gray-700">References:</p>
-                      <p className="text-gray-900 whitespace-pre-wrap">{submittedData.references}</p>
+                      <p className="font-semibold text-gray-700">Full Name:</p>
+                      <p className="text-gray-900">{submittedData.nominee_name}</p>
                     </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="border-b border-gray-300 pb-4">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Signature</h2>
-                <div className="text-sm">
-                  <p className="font-semibold text-gray-700">Applicant Signature:</p>
-                  <p className="text-gray-900 text-2xl font-cursive mt-2">{submittedData.signature}</p>
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Acknowledgements</h2>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <p className="text-gray-700">I understand that board members have fiduciary duties to the association and must act in the best interests of all owners.</p>
+                    <div>
+                      <p className="font-semibold text-gray-700">Email:</p>
+                      <p className="text-gray-900">{submittedData.nominee_email}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-700">Phone:</p>
+                      <p className="text-gray-900">{submittedData.nominee_phone}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-700">Unit Address:</p>
+                      <p className="text-gray-900">{submittedData.nominee_unit_address}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-700">Years at Property:</p>
+                      <p className="text-gray-900">{submittedData.years_at_property}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-700">Ownership Status:</p>
+                      <p className="text-gray-900">{submittedData.ownership_type}</p>
+                    </div>
                   </div>
-                  <div className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <p className="text-gray-700">I understand that serving on the board requires a significant time commitment.</p>
+                </div>
+
+                <div className="border-b border-gray-300 pb-4">
+                  <h2 className="mb-3 text-xl font-bold text-gray-900">Professional Background</h2>
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <p className="font-semibold text-gray-700">Current Employment/Profession:</p>
+                      <p className="text-gray-900">
+                        {submittedData.current_employment || 'Not provided'}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-700">
+                        Previous Board or Leadership Experience:
+                      </p>
+                      <p className="whitespace-pre-wrap text-gray-900">
+                        {submittedData.previous_board_experience || 'Not provided'}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-700">Relevant Skills &amp; Expertise:</p>
+                      <p className="whitespace-pre-wrap text-gray-900">
+                        {submittedData.relevant_skills}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-start space-x-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <p className="text-gray-700">I certify that the information provided is true and accurate.</p>
+                </div>
+
+                <div className="border-b border-gray-300 pb-4">
+                  <h2 className="mb-3 text-xl font-bold text-gray-900">Motivation &amp; Commitment</h2>
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <p className="font-semibold text-gray-700">
+                        Why do you want to serve on the board?
+                      </p>
+                      <p className="whitespace-pre-wrap text-gray-900">
+                        {submittedData.motivation}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-700">
+                        Can you commit to attending monthly board meetings?
+                      </p>
+                      <p className="text-gray-900">{submittedData.time_commitment}</p>
+                    </div>
+                    {submittedData.references && (
+                      <div>
+                        <p className="font-semibold text-gray-700">References:</p>
+                        <p className="whitespace-pre-wrap text-gray-900">
+                          {submittedData.references}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="border-b border-gray-300 pb-4">
+                  <h2 className="mb-3 text-xl font-bold text-gray-900">Signature</h2>
+                  <div className="text-sm">
+                    <p className="font-semibold text-gray-700">Applicant Signature:</p>
+                    <p className="mt-2 text-2xl text-gray-900">{submittedData.signature}</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="mb-3 text-xl font-bold text-gray-900">Acknowledgements</h2>
+                  <div className="space-y-2 text-sm">
+                    {[
+                      'I understand that board members have fiduciary duties to the association and must act in the best interests of all owners.',
+                      'I understand that serving on the board requires a significant time commitment.',
+                      'I certify that the information provided is true and accurate.',
+                    ].map((ack) => (
+                      <div key={ack} className="flex items-start gap-2">
+                        <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-600" />
+                        <p className="text-gray-700">{ack}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {submitStatus === 'error' && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
-          <p className="font-semibold">Oops! Something went wrong.</p>
-          <p className="text-sm">Please try again or contact us directly at mirsad@stellarpropertygroup.com</p>
-          <p className="text-xs mt-2 text-gray-600">Check the browser console (F12) for more details.</p>
-        </div>
-      )}
+        {submitStatus === 'error' && (
+          <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800">
+            <p className="font-semibold">Oops! Something went wrong.</p>
+            <p className="text-sm">
+              Please try again or contact us directly at mirsad@stellarpropertygroup.com
+            </p>
+          </div>
+        )}
 
-      {!import.meta.env.VITE_WEB3FORMS_ACCESS_KEY && (
-        <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-yellow-800">
-          <p className="font-semibold">Configuration Error</p>
-          <p className="text-sm">Web3Forms access key not configured. Please restart the dev server.</p>
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Nominee Information */}
-        <div className="border-b border-gray-200 pb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Nominee Information</h3>
-
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="nominee_name" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                <User className="w-4 h-4 mr-2" />
-                Full Name *
-              </label>
-              <input
-                type="text"
-                id="nominee_name"
-                name="nominee_name"
-                required
-                value={formData.nominee_name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="John Doe"
-              />
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="border-b border-ink-100 pb-7">
+            <h3 className={sectionTitleClass}>Nominee Information</h3>
+            <div className="space-y-4">
               <div>
-                <label htmlFor="nominee_email" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Email Address *
+                <label htmlFor="nominee_name" className={labelClass}>
+                  <User className="h-4 w-4 text-brand-500" />
+                  Full Name *
                 </label>
                 <input
-                  type="email"
-                  id="nominee_email"
-                  name="nominee_email"
+                  type="text"
+                  id="nominee_name"
+                  name="nominee_name"
                   required
-                  value={formData.nominee_email}
+                  value={formData.nominee_name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="john@example.com"
+                  className={inputClass}
+                  placeholder="John Doe"
+                />
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <label htmlFor="nominee_email" className={labelClass}>
+                    <Mail className="h-4 w-4 text-brand-500" />
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="nominee_email"
+                    name="nominee_email"
+                    required
+                    value={formData.nominee_email}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="nominee_phone" className={labelClass}>
+                    <Phone className="h-4 w-4 text-brand-500" />
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="nominee_phone"
+                    name="nominee_phone"
+                    required
+                    value={formData.nominee_phone}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder="(773) 555-0123"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="nominee_unit_address" className={labelClass}>
+                  <MapPin className="h-4 w-4 text-brand-500" />
+                  Unit Address *
+                </label>
+                <input
+                  type="text"
+                  id="nominee_unit_address"
+                  name="nominee_unit_address"
+                  required
+                  value={formData.nominee_unit_address}
+                  onChange={handleChange}
+                  className={inputClass}
+                  placeholder="Unit 301, 123 Main St, Chicago, IL 60601"
+                />
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <label htmlFor="years_at_property" className={labelClass}>
+                    Years at Property *
+                  </label>
+                  <input
+                    type="number"
+                    id="years_at_property"
+                    name="years_at_property"
+                    required
+                    value={formData.years_at_property}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder="5"
+                    min="0"
+                    step="0.5"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="ownership_type" className={labelClass}>
+                    Ownership Status *
+                  </label>
+                  <select
+                    id="ownership_type"
+                    name="ownership_type"
+                    required
+                    value={formData.ownership_type}
+                    onChange={handleChange}
+                    className={inputClass}
+                  >
+                    <option value="owner">Owner</option>
+                    <option value="renter">Renter (if allowed by bylaws)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-b border-ink-100 pb-7">
+            <h3 className={sectionTitleClass}>Professional Background</h3>
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="current_employment" className={labelClass}>
+                  Current Employment/Profession
+                </label>
+                <input
+                  type="text"
+                  id="current_employment"
+                  name="current_employment"
+                  value={formData.current_employment}
+                  onChange={handleChange}
+                  className={inputClass}
+                  placeholder="e.g., Software Engineer at Tech Company"
                 />
               </div>
 
               <div>
-                <label htmlFor="nominee_phone" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Phone Number *
+                <label htmlFor="previous_board_experience" className={labelClass}>
+                  Previous Board or Leadership Experience
                 </label>
-                <input
-                  type="tel"
-                  id="nominee_phone"
-                  name="nominee_phone"
-                  required
-                  value={formData.nominee_phone}
+                <textarea
+                  id="previous_board_experience"
+                  name="previous_board_experience"
+                  value={formData.previous_board_experience}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="(773) 555-0123"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="nominee_unit_address" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                <MapPin className="w-4 h-4 mr-2" />
-                Unit Address *
-              </label>
-              <input
-                type="text"
-                id="nominee_unit_address"
-                name="nominee_unit_address"
-                required
-                value={formData.nominee_unit_address}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="Unit 301, 123 Main St, Chicago, IL 60601"
-              />
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="years_at_property" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                  Years at Property *
-                </label>
-                <input
-                  type="number"
-                  id="years_at_property"
-                  name="years_at_property"
-                  required
-                  value={formData.years_at_property}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="5"
-                  min="0"
-                  step="0.5"
+                  rows={4}
+                  className={`${inputClass} resize-none`}
+                  placeholder="Describe any previous experience serving on boards, committees, or leadership positions..."
                 />
               </div>
 
               <div>
-                <label htmlFor="ownership_type" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                  Ownership Status *
+                <label htmlFor="relevant_skills" className={labelClass}>
+                  <FileText className="h-4 w-4 text-brand-500" />
+                  Relevant Skills &amp; Expertise *
                 </label>
-                <select
-                  id="ownership_type"
-                  name="ownership_type"
+                <textarea
+                  id="relevant_skills"
+                  name="relevant_skills"
                   required
-                  value={formData.ownership_type}
+                  value={formData.relevant_skills}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                >
-                  <option value="owner">Owner</option>
-                  <option value="renter">Renter (if allowed by bylaws)</option>
-                </select>
+                  rows={4}
+                  className={`${inputClass} resize-none`}
+                  placeholder="e.g., Financial management, legal background, construction/engineering, communication skills, property management..."
+                />
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Professional Background */}
-        <div className="border-b border-gray-200 pb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Background</h3>
+          <div className="border-b border-ink-100 pb-7">
+            <h3 className={sectionTitleClass}>Motivation &amp; Commitment</h3>
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="motivation" className={labelClass}>
+                  Why do you want to serve on the board? *
+                </label>
+                <textarea
+                  id="motivation"
+                  name="motivation"
+                  required
+                  value={formData.motivation}
+                  onChange={handleChange}
+                  rows={5}
+                  className={`${inputClass} resize-none`}
+                  placeholder="Describe your motivation for serving on the board and what you hope to contribute to the community..."
+                />
+              </div>
 
-          <div className="space-y-4">
+              <div>
+                <label className="mb-3 block text-sm font-semibold text-ink-800">
+                  Can you commit to attending monthly board meetings? *
+                </label>
+                <div className="flex flex-col gap-3 sm:flex-row sm:gap-6">
+                  {[
+                    { value: 'yes', label: 'Yes' },
+                    { value: 'no', label: 'No' },
+                    { value: 'mostly', label: 'Mostly, with occasional conflicts' },
+                  ].map((opt) => (
+                    <label key={opt.value} className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name="time_commitment"
+                        value={opt.value}
+                        checked={formData.time_commitment === opt.value}
+                        onChange={handleChange}
+                        required
+                        className="h-4 w-4 accent-brand-600"
+                      />
+                      <span className="text-sm text-ink-700">{opt.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="references" className={labelClass}>
+                  References (Optional)
+                </label>
+                <textarea
+                  id="references"
+                  name="references"
+                  value={formData.references}
+                  onChange={handleChange}
+                  rows={3}
+                  className={`${inputClass} resize-none`}
+                  placeholder="Names and contact information of references (other unit owners, professional contacts, etc.)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="border-b border-ink-100 pb-7">
+            <h3 className={sectionTitleClass}>Signature</h3>
             <div>
-              <label htmlFor="current_employment" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                Current Employment/Profession
+              <label htmlFor="signature" className={labelClass}>
+                Signature *
               </label>
+              <p className="mb-2 text-sm text-ink-500">Type your full name as signature</p>
               <input
                 type="text"
-                id="current_employment"
-                name="current_employment"
-                value={formData.current_employment}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="e.g., Software Engineer at Tech Company"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="previous_board_experience" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                Previous Board or Leadership Experience
-              </label>
-              <textarea
-                id="previous_board_experience"
-                name="previous_board_experience"
-                value={formData.previous_board_experience}
-                onChange={handleChange}
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                placeholder="Describe any previous experience serving on boards, committees, or leadership positions..."
-              />
-            </div>
-
-            <div>
-              <label htmlFor="relevant_skills" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                <FileText className="w-4 h-4 mr-2" />
-                Relevant Skills & Expertise *
-              </label>
-              <textarea
-                id="relevant_skills"
-                name="relevant_skills"
+                id="signature"
+                name="signature"
                 required
-                value={formData.relevant_skills}
+                value={formData.signature}
                 onChange={handleChange}
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                placeholder="e.g., Financial management, legal background, construction/engineering, communication skills, property management..."
+                className={inputClass}
+                placeholder="Type your full name"
               />
             </div>
           </div>
-        </div>
 
-        {/* Motivation & Commitment */}
-        <div className="border-b border-gray-200 pb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Motivation & Commitment</h3>
-
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="motivation" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                Why do you want to serve on the board? *
-              </label>
-              <textarea
-                id="motivation"
-                name="motivation"
-                required
-                value={formData.motivation}
-                onChange={handleChange}
-                rows={5}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                placeholder="Describe your motivation for serving on the board and what you hope to contribute to the community..."
-              />
-            </div>
-
-            <div>
-              <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
-                Can you commit to attending monthly board meetings? *
-              </label>
-              <div className="flex space-x-6">
-                <label className="flex items-center space-x-2 cursor-pointer">
+          <div className="border-b border-ink-100 pb-7">
+            <h3 className={sectionTitleClass}>Acknowledgements</h3>
+            <div className="space-y-4">
+              {[
+                {
+                  name: 'acknowledged_terms',
+                  checked: formData.acknowledged_terms,
+                  text: "I understand that board members have fiduciary duties to the association and must act in the best interests of all owners. I agree to comply with the association's governing documents and all applicable laws. *",
+                },
+                {
+                  name: 'acknowledged_commitment',
+                  checked: formData.acknowledged_commitment,
+                  text: 'I understand that serving on the board requires a significant time commitment including attending regular meetings, reviewing documents, and responding to association matters. *',
+                },
+                {
+                  name: 'acknowledged_attendance',
+                  checked: formData.acknowledged_attendance,
+                  text: 'I certify that the information provided in this application is true and accurate to the best of my knowledge. *',
+                },
+              ].map((ack) => (
+                <label key={ack.name} className="flex cursor-pointer items-start gap-3">
                   <input
-                    type="radio"
-                    name="time_commitment"
-                    value="yes"
-                    checked={formData.time_commitment === 'yes'}
+                    type="checkbox"
+                    name={ack.name}
+                    checked={ack.checked}
                     onChange={handleChange}
                     required
-                    className="w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
+                    className="mt-0.5 h-5 w-5 shrink-0 rounded accent-brand-600"
                   />
-                  <span className="text-gray-700">Yes</span>
+                  <span className="text-sm leading-relaxed text-ink-600">{ack.text}</span>
                 </label>
-                <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="time_commitment"
-                    value="no"
-                    checked={formData.time_commitment === 'no'}
-                    onChange={handleChange}
-                    required
-                    className="w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
-                  />
-                  <span className="text-gray-700">No</span>
-                </label>
-                <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="time_commitment"
-                    value="mostly"
-                    checked={formData.time_commitment === 'mostly'}
-                    onChange={handleChange}
-                    required
-                    className="w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
-                  />
-                  <span className="text-gray-700">Mostly, with occasional conflicts</span>
-                </label>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="references" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-                References (Optional)
-              </label>
-              <textarea
-                id="references"
-                name="references"
-                value={formData.references}
-                onChange={handleChange}
-                rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                placeholder="Names and contact information of references (other unit owners, professional contacts, etc.)"
-              />
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Signature */}
-        <div className="border-b border-gray-200 pb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Signature</h3>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-8 py-4 font-semibold text-white transition-all hover:bg-brand-700 hover:shadow-lift disabled:cursor-not-allowed disabled:bg-ink-300"
+          >
+            {isSubmitting ? (
+              <>
+                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                <span>Submitting...</span>
+              </>
+            ) : (
+              <>
+                <Send className="h-5 w-5" />
+                <span>Submit Board Nomination Application</span>
+              </>
+            )}
+          </button>
+
+          <p className="text-center text-sm text-ink-400">
+            * Required fields. Your application is delivered to mirsad@stellarpropertygroup.com
+          </p>
+        </form>
+
+        <div className="mt-12 space-y-6 border-t border-ink-100 pt-8">
+          <div>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                <Award className="h-5 w-5" />
+              </span>
+              <h3 className="font-display text-xl font-bold text-ink-900">
+                Board Service Information
+              </h3>
+            </div>
+            <p className="leading-relaxed text-ink-500">
+              Serving on your condominium or HOA board is a valuable way to contribute to your
+              community. Board members make important decisions about the property's management,
+              finances, and future direction while working collaboratively with professional
+              management.
+            </p>
+          </div>
 
           <div>
-            <label htmlFor="signature" className="flex items-center text-sm font-semibold text-gray-700 mb-2">
-              Signature *
-            </label>
-            <p className="text-sm text-gray-600 mb-2">Type your full name as signature</p>
-            <input
-              type="text"
-              id="signature"
-              name="signature"
-              required
-              value={formData.signature}
-              onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-cursive"
-              placeholder="Type your full name"
-            />
+            <h4 className="mb-3 font-display text-lg font-bold text-ink-900">
+              Board Member Responsibilities
+            </h4>
+            <ul className="grid gap-2.5 md:grid-cols-2">
+              {responsibilities.map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm text-ink-600">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
 
-        {/* Acknowledgements */}
-        <div className="border-b border-gray-200 pb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Acknowledgements</h3>
-
-          <div className="space-y-4">
-            <label className="flex items-start space-x-3 cursor-pointer">
-              <input
-                type="checkbox"
-                name="acknowledged_terms"
-                checked={formData.acknowledged_terms}
-                onChange={handleChange}
-                required
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500 mt-1 flex-shrink-0"
-              />
-              <span className="text-gray-700 text-sm">
-                I understand that board members have fiduciary duties to the association and must act in the best interests of all owners. I agree to comply with the association's governing documents and all applicable laws. *
-              </span>
-            </label>
-
-            <label className="flex items-start space-x-3 cursor-pointer">
-              <input
-                type="checkbox"
-                name="acknowledged_commitment"
-                checked={formData.acknowledged_commitment}
-                onChange={handleChange}
-                required
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500 mt-1 flex-shrink-0"
-              />
-              <span className="text-gray-700 text-sm">
-                I understand that serving on the board requires a significant time commitment including attending regular meetings, reviewing documents, and responding to association matters. *
-              </span>
-            </label>
-
-            <label className="flex items-start space-x-3 cursor-pointer">
-              <input
-                type="checkbox"
-                name="acknowledged_attendance"
-                checked={formData.acknowledged_attendance}
-                onChange={handleChange}
-                required
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500 mt-1 flex-shrink-0"
-              />
-              <span className="text-gray-700 text-sm">
-                I certify that the information provided in this application is true and accurate to the best of my knowledge. *
-              </span>
-            </label>
+          <div className="rounded-2xl border border-brand-100 bg-brand-50 p-6">
+            <h4 className="mb-3 font-display text-lg font-bold text-ink-900">Election Process</h4>
+            <p className="leading-relaxed text-ink-600">
+              Board positions are typically determined by the percentage of votes received during
+              the annual election. All eligible unit owners may vote, with voting power often based
+              on percentage of ownership. The nominating committee reviews applications and may
+              interview candidates before presenting them to the membership for election.
+            </p>
           </div>
-        </div>
-
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-        >
-          {isSubmitting ? (
-            <>
-              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              <span>Submitting...</span>
-            </>
-          ) : (
-            <>
-              <Send className="w-5 h-5" />
-              <span>Submit Board Nomination Application</span>
-            </>
-          )}
-        </button>
-
-        <p className="text-sm text-gray-600 text-center">
-          * Required fields. Your application will be reviewed by the nominating committee.
-        </p>
-      </form>
-
-      {/* Information Section */}
-      <div className="mt-12 space-y-6 border-t border-gray-200 pt-8">
-        <div>
-          <div className="flex items-center space-x-3 mb-4">
-            <Award className="w-8 h-8 text-blue-600" />
-            <h3 className="text-2xl font-bold text-gray-900">Board Service Information</h3>
-          </div>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Serving on your condominium or HOA board is a valuable way to contribute to your community. Board members make important decisions about the property's management, finances, and future direction while working collaboratively with professional management.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="text-xl font-bold text-gray-900 mb-3">Board Member Responsibilities</h4>
-          <ul className="grid md:grid-cols-2 gap-2 text-gray-700">
-            <li className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-              <span>Attend regular board meetings (typically monthly)</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-              <span>Review financial reports and budgets</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-              <span>Make decisions on maintenance and improvements</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-              <span>Address owner concerns and communications</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-              <span>Oversee compliance with governing documents</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-              <span>Work with property management company</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h4 className="text-xl font-bold text-gray-900 mb-3">Election Process</h4>
-          <p className="text-gray-700 leading-relaxed">
-            Board positions are typically determined by the percentage of votes received during the annual election. All eligible unit owners may vote, with voting power often based on percentage of ownership. The nominating committee reviews applications and may interview candidates before presenting them to the membership for election.
-          </p>
         </div>
       </div>
     </div>

@@ -1,6 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Building2, Shield, DollarSign, Users, ClipboardCheck, Phone, MapPin, ArrowRight, Home } from 'lucide-react';
+import {
+  Building2, Shield, DollarSign, Users, Wrench, Phone, MapPin, ArrowRight, Home,
+} from 'lucide-react';
+import PageHero from '../components/ui/PageHero';
+import SectionHeading from '../components/ui/SectionHeading';
 import { getNeighborhoodBySlug, getRelatedNeighborhoods } from '../data/neighborhoods';
 
 const services = [
@@ -8,49 +12,49 @@ const services = [
     title: 'Financial Management',
     description: 'Transparent budgeting, assessments, reserves, and detailed financial reporting for your association.',
     icon: DollarSign,
-    link: '/services/financial-management'
+    link: '/services/financial-management',
   },
   {
-    title: 'Maintenance & Operations',
-    description: 'Proactive maintenance programs, vendor management, and 24/7 emergency response.',
-    icon: ClipboardCheck,
-    link: '/services/maintenance'
+    title: 'Maintenance Coordination',
+    description: 'Proactive maintenance programs, vetted vendor management, and 24/7 emergency response.',
+    icon: Wrench,
+    link: '/services/maintenance-coordination',
   },
   {
-    title: 'Board & Community Support',
-    description: 'Meeting coordination, compliance enforcement, and communication tools for effective governance.',
+    title: 'Board Support',
+    description: 'Meeting coordination, governance guidance, and communication tools for effective board leadership.',
     icon: Users,
-    link: '/services/board-support'
+    link: '/services/board-support',
   },
   {
-    title: 'Vendor Management',
-    description: 'Vetted contractor networks, competitive bidding, and quality oversight for all building projects.',
+    title: 'HOA Management',
+    description: 'Full-service homeowners association management focused on compliance and community engagement.',
     icon: Building2,
-    link: '/services/vendor-management'
-  }
+    link: '/services/hoa-management',
+  },
 ];
 
 const whyChoose = [
   {
     title: 'Local Expertise',
     description: 'Deep knowledge of Chicago neighborhoods, building codes, and local vendor networks.',
-    icon: MapPin
+    icon: MapPin,
   },
   {
     title: 'Proven Track Record',
-    description: 'Trusted by hundreds of associations across Chicago for reliable, professional management.',
-    icon: Shield
+    description: 'Trusted by associations across Chicago for reliable, professional management since 2007.',
+    icon: Shield,
   },
   {
     title: 'Transparent Communication',
     description: 'Real-time reporting, online portals, and responsive service your board can count on.',
-    icon: Phone
+    icon: Phone,
   },
   {
     title: 'Tailored Solutions',
     description: 'Management plans customized to your building size, budget, and community needs.',
-    icon: Home
-  }
+    icon: Home,
+  },
 ];
 
 export default function NeighborhoodPage() {
@@ -59,18 +63,18 @@ export default function NeighborhoodPage() {
 
   if (!neighborhood) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center px-4">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Neighborhood Not Found</h1>
-          <p className="text-lg text-gray-600 mb-8">
-            We couldn't find the neighborhood you're looking for. Browse all our service areas to find your community.
+      <div className="flex min-h-screen items-center justify-center bg-ink-50 px-6 pt-20">
+        <div className="text-center">
+          <h1 className="font-display text-3xl font-extrabold text-ink-900">
+            Neighborhood not found
+          </h1>
+          <p className="mx-auto mt-3 max-w-md text-ink-500">
+            We couldn't find the neighborhood you're looking for. Browse all our service areas
+            to find your community.
           </p>
-          <Link
-            to="/service-areas"
-            className="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
-          >
+          <Link to="/service-areas" className="btn-primary mt-8">
             View All Service Areas
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
@@ -92,14 +96,11 @@ export default function NeighborhoodPage() {
       addressLocality: 'Chicago',
       addressRegion: 'IL',
       postalCode: '60625',
-      addressCountry: 'US'
+      addressCountry: 'US',
     },
-    areaServed: {
-      '@type': 'Place',
-      name: `${neighborhood.name}, Chicago, IL`
-    },
+    areaServed: { '@type': 'Place', name: `${neighborhood.name}, Chicago, IL` },
     serviceType: 'Property Management',
-    priceRange: '$$'
+    priceRange: '$$',
   };
 
   return (
@@ -121,138 +122,109 @@ export default function NeighborhoodPage() {
         <script type="application/ld+json">{JSON.stringify(schemaMarkup)}</script>
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-blue-200 mb-4">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <span>/</span>
-              <Link to="/service-areas" className="hover:text-white transition-colors">Service Areas</Link>
-              <span>/</span>
-              <span className="text-white">{neighborhood.name}</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Property Management in {neighborhood.name}, Chicago
-            </h1>
-            <p className="text-xl text-blue-100 mb-8">
-              {neighborhood.description}
-            </p>
-            <div className="flex flex-wrap gap-3 mb-8">
-              {neighborhood.propertyTypes.map((type) => (
-                <span
-                  key={type}
-                  className="bg-blue-700/50 border border-blue-400/30 text-blue-100 px-4 py-1.5 rounded-full text-sm font-medium capitalize"
-                >
-                  {type}
-                </span>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              >
-                Get a Free Quote
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <a
-                href="tel:7737280652"
-                className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                773.728.0652
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Services in {neighborhood.name}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive property management tailored to the unique needs of {neighborhood.name} associations.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <Link
-                  key={service.title}
-                  to={service.link}
-                  className="group bg-gray-50 rounded-xl p-6 hover:bg-blue-50 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
-                    <Icon className="w-6 h-6 text-blue-700" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{service.description}</p>
-                </Link>
-              );
-            })}
-          </div>
-          <div className="text-center mt-12">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-800 transition-colors"
+      <PageHero
+        align="left"
+        eyebrow="Neighborhood Property Management"
+        breadcrumb={[
+          { label: 'Home', href: '/' },
+          { label: 'Service Areas', href: '/service-areas' },
+          { label: neighborhood.name },
+        ]}
+        title={`Property Management in ${neighborhood.name}, Chicago`}
+        description={neighborhood.description}
+      >
+        <div className="flex w-full flex-wrap gap-2">
+          {neighborhood.propertyTypes.map((type) => (
+            <span
+              key={type}
+              className="rounded-full border border-brand-100 bg-white px-3.5 py-1.5 text-xs font-semibold capitalize text-brand-700"
             >
+              {type}
+            </span>
+          ))}
+        </div>
+        <Link to="/contact" className="btn-primary btn-lg">
+          Get a Free Quote
+          <ArrowRight className="h-5 w-5" />
+        </Link>
+        <a href="tel:7737280652" className="btn-secondary btn-lg">
+          <Phone className="h-5 w-5" />
+          773.728.0652
+        </a>
+      </PageHero>
+
+      {/* Services */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="container-x">
+          <SectionHeading
+            align="center"
+            eyebrow="Our Services"
+            title={`Property management in ${neighborhood.name}`}
+            description={`Comprehensive property management tailored to the unique needs of ${neighborhood.name} associations.`}
+          />
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map(({ title, description, icon: Icon, link }) => (
+              <Link
+                key={title}
+                to={link}
+                className="group flex flex-col rounded-2xl border border-ink-100 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card-hover"
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-display text-base font-bold text-ink-900 transition-colors group-hover:text-brand-700">
+                  {title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{description}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link to="/services" className="btn-secondary">
               View All Services
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Stellar for {neighborhood.name} Property Management
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We combine citywide resources with neighborhood-level knowledge to deliver exceptional results for your association.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {whyChoose.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="flex gap-4 bg-white rounded-xl p-6 shadow-sm"
-                >
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-6 h-6 text-blue-700" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
+      {/* Why Choose */}
+      <section className="bg-ink-50 py-20 lg:py-28">
+        <div className="container-x">
+          <SectionHeading
+            align="center"
+            eyebrow="The Difference"
+            title={`Why ${neighborhood.name} boards choose Stellar`}
+            description="We combine citywide resources with neighborhood-level knowledge to deliver exceptional results for your association."
+          />
+          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {whyChoose.map(({ title, description, icon: Icon }) => (
+              <div
+                key={title}
+                className="flex gap-5 rounded-2xl border border-ink-100 bg-white p-7 shadow-soft"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <div>
+                  <h3 className="font-display text-lg font-bold text-ink-900">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-500">{description}</p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Zip Codes Section */}
-      <section className="py-12 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Zip codes */}
+      <section className="bg-white py-12">
+        <div className="container-x">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-gray-700 font-semibold">Serving ZIP codes:</span>
+            <span className="font-semibold text-ink-900">Serving ZIP codes:</span>
             {neighborhood.zipCodes.map((zip) => (
               <span
                 key={zip}
-                className="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-sm font-medium"
+                className="rounded-lg bg-ink-50 px-3 py-1 text-sm font-medium text-ink-600"
               >
                 {zip}
               </span>
@@ -261,61 +233,61 @@ export default function NeighborhoodPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Elevate Your {neighborhood.name} Property Management?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Contact us today for a free, no-obligation consultation and proposal tailored to your association's needs.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors"
-            >
-              Get Your Free Proposal
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a
-              href="tel:7737280652"
-              className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors"
-            >
-              <Phone className="w-5 h-5" />
-              Call 773.728.0652
-            </a>
+      {/* CTA */}
+      <section className="bg-ink-50 py-20 lg:py-28">
+        <div className="container-x">
+          <div className="relative overflow-hidden rounded-4xl bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 px-7 py-14 text-center sm:px-12 lg:py-16">
+            <div className="absolute inset-0 bg-grid-light opacity-70" />
+            <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-brand-500/30 blur-3xl" />
+            <div className="relative mx-auto max-w-2xl">
+              <h2 className="font-display text-3xl font-extrabold leading-tight text-white text-balance sm:text-4xl">
+                Ready to elevate your {neighborhood.name} property management?
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-brand-100">
+                Contact us today for a free, no-obligation consultation and proposal tailored
+                to your association's needs.
+              </p>
+              <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Link to="/contact" className="btn-white btn-lg w-full sm:w-auto">
+                  Get Your Free Proposal
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+                <a
+                  href="tel:7737280652"
+                  className="btn btn-lg w-full border border-white/25 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 sm:w-auto"
+                >
+                  <Phone className="h-5 w-5" />
+                  773.728.0652
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Related Neighborhoods & Internal Links */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Explore Nearby Neighborhoods
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {/* Related neighborhoods */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="container-x">
+          <SectionHeading eyebrow="Nearby" title="Explore nearby neighborhoods" />
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {relatedNeighborhoods.map((related) => (
               <Link
                 key={related.slug}
                 to={`/property-management-${related.slug}`}
-                className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+                className="group rounded-2xl border border-ink-100 bg-ink-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:bg-white hover:shadow-card-hover"
               >
-                <div className="flex items-center gap-2 mb-3">
-                  <MapPin className="w-5 h-5 text-blue-700" />
-                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                <div className="mb-3 flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-brand-600" />
+                  <h3 className="font-display text-lg font-bold text-ink-900 transition-colors group-hover:text-brand-700">
                     {related.name}
                   </h3>
                 </div>
-                <p className="text-gray-600 text-sm line-clamp-2 mb-3">
-                  {related.description}
-                </p>
+                <p className="mb-3 line-clamp-2 text-sm text-ink-500">{related.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {related.propertyTypes.slice(0, 3).map((type) => (
                     <span
                       key={type}
-                      className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs capitalize"
+                      className="rounded-md bg-white px-2 py-0.5 text-xs font-medium capitalize text-ink-500"
                     >
                       {type}
                     </span>
@@ -325,27 +297,23 @@ export default function NeighborhoodPage() {
             ))}
           </div>
 
-          <div className="border-t border-gray-200 pt-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-1 text-blue-700 hover:text-blue-800 font-medium transition-colors"
-              >
-                Our Services <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-1 text-blue-700 hover:text-blue-800 font-medium transition-colors"
-              >
-                Contact Us <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/service-areas"
-                className="inline-flex items-center gap-1 text-blue-700 hover:text-blue-800 font-medium transition-colors"
-              >
-                All Service Areas <ArrowRight className="w-4 h-4" />
-              </Link>
+          <div className="mt-10 border-t border-ink-100 pt-8">
+            <h3 className="mb-4 font-display text-lg font-bold text-ink-900">Quick links</h3>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              {[
+                { to: '/services', label: 'Our Services' },
+                { to: '/contact', label: 'Contact Us' },
+                { to: '/service-areas', label: 'All Service Areas' },
+              ].map(({ to, label }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition-colors hover:text-brand-700"
+                >
+                  {label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              ))}
             </div>
           </div>
         </div>

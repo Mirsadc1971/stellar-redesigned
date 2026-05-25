@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
   CreditCard, AlertTriangle, Users, MessageSquare, ArrowRight,
-  ExternalLink, ChevronDown, ChevronUp, HelpCircle
+  ExternalLink, ChevronDown, HelpCircle,
 } from 'lucide-react';
+import PageHero from '../components/ui/PageHero';
+import SectionHeading from '../components/ui/SectionHeading';
+import { CTASection } from '../components/ui/CTASection';
 import { ViolationReportForm } from '../components/ViolationReportForm';
 import { BoardNominationForm } from '../components/BoardNominationForm';
 
@@ -20,12 +23,12 @@ const faqs = [
     a: 'Maintenance requests can be submitted through the AppFolio portal under "Maintenance Requests." For after-hours emergencies (flooding, fire, elevator issues), call 773.728.0652 directly.',
   },
   {
-    q: 'Where can I find my association\'s governing documents?',
+    q: "Where can I find my association's governing documents?",
     a: 'Governing documents including bylaws, declarations, and rules are available in the document section of your AppFolio portal. Contact your property manager if you need assistance locating specific documents.',
   },
   {
     q: 'How do I get access to the resident portal?',
-    a: 'New residents receive portal invitations during onboarding. If you haven\'t received yours or need a new invitation, contact our office and we\'ll send one to your registered email address within one business day.',
+    a: "New residents receive portal invitations during onboarding. If you haven't received yours or need a new invitation, contact our office and we'll send one to your registered email address within one business day.",
   },
   {
     q: 'When are board meetings held?',
@@ -69,18 +72,16 @@ export default function Resources() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleQuickLink = (action: string) => {
-    if (action === 'violation') {
-      setActiveTab('violation');
-      setTimeout(() => {
-        document.getElementById('forms-section')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else if (action === 'nomination') {
-      setActiveTab('nomination');
+    if (action === 'violation' || action === 'nomination') {
+      setActiveTab(action);
       setTimeout(() => {
         document.getElementById('forms-section')?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
   };
+
+  const cardClass =
+    'group flex flex-col rounded-2xl border border-ink-100 bg-white p-7 text-left shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card-hover';
 
   return (
     <>
@@ -93,47 +94,33 @@ export default function Resources() {
         <link rel="canonical" href="https://stellarpropertygroup.com/resources" />
       </Helmet>
 
-      {/* ── Hero ───────────────────────────────────────────────── */}
-      <section className="relative py-28 lg:py-36 bg-navy-950 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-500/5 rounded-full -translate-y-1/2 translate-x-1/3" />
+      <PageHero
+        eyebrow="Owner & Resident Portal"
+        breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Resources' }]}
+        title="Owner & resident resources"
+        description="Everything you need to manage your account, submit forms, and stay connected with your community — all in one place."
+      />
 
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 text-white/80 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
-            Owner &amp; Resident Portal
-          </div>
-          <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.08] mb-6">
-            Owner &amp; Resident Resources
-          </h1>
-          <p className="text-lg lg:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
-            Everything you need to manage your account, submit forms, and stay connected with your community — all in one place.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Quick Links ────────────────────────────────────────── */}
-      <section className="py-28 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-          <div className="max-w-2xl mb-16">
-            <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 mb-3">Quick Links</p>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-900 leading-tight mb-4">
-              What Can We Help You With?
-            </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Select an option below to get started.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Quick links */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Quick Links"
+            title="What can we help you with?"
+            description="Select an option below to get started."
+          />
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {quickLinks.map(({ icon: Icon, title, desc, action }) => {
+              const inner = (
+                <>
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-ink-900">{title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{desc}</p>
+                </>
+              );
+
               if (action === 'portal') {
                 return (
                   <a
@@ -141,15 +128,11 @@ export default function Resources() {
                     href="https://stellarpropertygroup.appfolio.com/connect/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100"
+                    className={cardClass}
                   >
-                    <div className="w-11 h-11 rounded-xl bg-navy-50 flex items-center justify-center mb-5 group-hover:bg-navy-800 transition-colors duration-300">
-                      <Icon className="w-5 h-5 text-navy-700 group-hover:text-white transition-colors duration-300" />
-                    </div>
-                    <h3 className="text-base font-semibold text-navy-900 mb-2">{title}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed mb-4">{desc}</p>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-navy-600 group-hover:text-navy-800 transition-colors">
-                      Open Portal <ExternalLink className="w-3.5 h-3.5" />
+                    {inner}
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+                      Open Portal <ExternalLink className="h-3.5 w-3.5" />
                     </span>
                   </a>
                 );
@@ -157,36 +140,20 @@ export default function Resources() {
 
               if (action === 'contact') {
                 return (
-                  <Link
-                    key={title}
-                    to="/contact"
-                    className="group bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100"
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-navy-50 flex items-center justify-center mb-5 group-hover:bg-navy-800 transition-colors duration-300">
-                      <Icon className="w-5 h-5 text-navy-700 group-hover:text-white transition-colors duration-300" />
-                    </div>
-                    <h3 className="text-base font-semibold text-navy-900 mb-2">{title}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed mb-4">{desc}</p>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-navy-600 group-hover:text-navy-800 transition-colors">
-                      Contact Us <ArrowRight className="w-3.5 h-3.5" />
+                  <Link key={title} to="/contact" className={cardClass}>
+                    {inner}
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+                      Contact Us <ArrowRight className="h-3.5 w-3.5" />
                     </span>
                   </Link>
                 );
               }
 
               return (
-                <button
-                  key={title}
-                  onClick={() => handleQuickLink(action)}
-                  className="group bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100 text-left"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-navy-50 flex items-center justify-center mb-5 group-hover:bg-navy-800 transition-colors duration-300">
-                    <Icon className="w-5 h-5 text-navy-700 group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-base font-semibold text-navy-900 mb-2">{title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-4">{desc}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-navy-600 group-hover:text-navy-800 transition-colors">
-                    Open Form <ArrowRight className="w-3.5 h-3.5" />
+                <button key={title} onClick={() => handleQuickLink(action)} className={cardClass}>
+                  {inner}
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+                    Open Form <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </button>
               );
@@ -195,95 +162,85 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* ── Tab Forms Section ──────────────────────────────────── */}
-      <section id="forms-section" className="py-28 bg-white">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 mb-3">Online Forms</p>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-900 leading-tight mb-4">
-              Submit a Form
-            </h2>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-xl mx-auto">
-              Select a form below to get started. All submissions are sent directly to our management team.
-            </p>
+      {/* Forms */}
+      <section id="forms-section" className="scroll-mt-24 bg-ink-50 py-20 lg:py-28">
+        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Online Forms"
+            title="Submit a form"
+            description="Select a form below to get started. All submissions are sent directly to our management team."
+          />
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            {[
+              { key: 'violation' as const, icon: AlertTriangle, label: 'Violation Report' },
+              { key: 'nomination' as const, icon: Users, label: 'Board Nomination' },
+            ].map(({ key, icon: Icon, label }) => (
+              <button
+                key={key}
+                onClick={() => setActiveTab(activeTab === key ? null : key)}
+                className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-semibold transition-all duration-200 ${
+                  activeTab === key
+                    ? 'bg-brand-600 text-white shadow-lift'
+                    : 'border border-ink-200 bg-white text-ink-700 hover:border-brand-300 hover:text-brand-700'
+                }`}
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </button>
+            ))}
           </div>
 
-          {/* Tab Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-10">
-            <button
-              onClick={() => setActiveTab(activeTab === 'violation' ? null : 'violation')}
-              className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                activeTab === 'violation'
-                  ? 'bg-navy-800 text-white shadow-lg'
-                  : 'bg-slate-100 text-navy-700 hover:bg-slate-200'
-              }`}
-            >
-              <AlertTriangle className="w-4 h-4" />
-              Violation Report
-            </button>
-            <button
-              onClick={() => setActiveTab(activeTab === 'nomination' ? null : 'nomination')}
-              className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                activeTab === 'nomination'
-                  ? 'bg-navy-800 text-white shadow-lg'
-                  : 'bg-slate-100 text-navy-700 hover:bg-slate-200'
-              }`}
-            >
-              <Users className="w-4 h-4" />
-              Board Nomination
-            </button>
-          </div>
+          <div className="mt-8">
+            {activeTab === 'violation' && <ViolationReportForm />}
+            {activeTab === 'nomination' && <BoardNominationForm />}
 
-          {/* Tab Content */}
-          {activeTab === 'violation' && <ViolationReportForm />}
-          {activeTab === 'nomination' && <BoardNominationForm />}
-
-          {!activeTab && (
-            <div className="text-center py-16 bg-slate-50 rounded-2xl border border-slate-100">
-              <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-4">
-                <HelpCircle className="w-7 h-7 text-slate-400" />
+            {!activeTab && (
+              <div className="rounded-2xl border border-dashed border-ink-200 bg-white py-16 text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-50">
+                  <HelpCircle className="h-7 w-7 text-brand-400" />
+                </div>
+                <p className="text-sm text-ink-500">
+                  Select a form above to get started, or use the quick links to access the
+                  owner portal.
+                </p>
               </div>
-              <p className="text-slate-500 text-sm">
-                Select a form above to get started, or use the quick links to access the owner portal.
-              </p>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </section>
 
-      {/* ── FAQ Section ────────────────────────────────────────── */}
-      <section className="py-28 bg-slate-50">
-        <div className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-10">
-          <div className="text-center mb-16">
-            <p className="text-xs font-semibold uppercase tracking-widest text-navy-600 mb-3">FAQ</p>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-navy-900 leading-tight mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Answers to common owner and resident questions.
-            </p>
-          </div>
-
+      {/* FAQ */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="FAQ"
+            title="Frequently asked questions"
+            description="Answers to common owner and resident questions."
+            className="mb-12"
+          />
           <div className="space-y-3">
             {faqs.map(({ q, a }, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-slate-100 shadow-card overflow-hidden"
+                className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                 >
-                  <span className="text-sm font-semibold text-navy-900">{q}</span>
-                  {openFaq === idx ? (
-                    <ChevronUp className="w-4 h-4 text-slate-400 flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4 text-slate-400 flex-shrink-0" />
-                  )}
+                  <span className="font-semibold text-ink-900">{q}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 text-ink-400 transition-transform duration-200 ${
+                      openFaq === idx ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
                 {openFaq === idx && (
                   <div className="px-6 pb-5">
-                    <p className="text-sm text-slate-600 leading-relaxed">{a}</p>
+                    <p className="text-sm leading-relaxed text-ink-500">{a}</p>
                   </div>
                 )}
               </div>
@@ -292,41 +249,11 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────────────────────── */}
-      <section className="py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-          <div className="bg-navy-950 rounded-3xl overflow-hidden">
-            <div className="relative px-8 py-16 lg:px-16 lg:py-20 text-center">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-              <div className="absolute bottom-0 left-0 w-72 h-72 bg-gold-500/5 rounded-full translate-y-1/2 -translate-x-1/3" />
-
-              <div className="relative max-w-2xl mx-auto">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gold-400 mb-3">Need Help?</p>
-                <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                  Can't Find What You Need?
-                </h2>
-                <p className="text-white/60 text-lg leading-relaxed mb-10">
-                  Our management team is here to help. Reach out and we'll get you the answers or resources you need.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-950 font-semibold px-7 py-3.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg text-sm"
-                  >
-                    Contact Us <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <a
-                    href="tel:7737280652"
-                    className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-7 py-3.5 rounded-lg hover:bg-white/15 transition-all duration-200 text-sm"
-                  >
-                    Call 773.728.0652
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Can't find what you need?"
+        description="Our management team is here to help. Reach out and we'll get you the answers or resources you need."
+        primaryText="Contact Us"
+      />
     </>
   );
 }

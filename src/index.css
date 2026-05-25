@@ -9,8 +9,58 @@
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
+    color: #4d586e;
+    background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: #2556ea;
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold
+           transition-all duration-200 whitespace-nowrap;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white px-7 py-3.5 text-sm
+           hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lift;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-ink-800 border border-ink-200 px-7 py-3.5 text-sm
+           hover:border-brand-300 hover:text-brand-700 hover:-translate-y-0.5 hover:shadow-card;
+  }
+  .btn-ghost {
+    @apply btn bg-brand-50 text-brand-700 px-7 py-3.5 text-sm hover:bg-brand-100;
+  }
+  .btn-white {
+    @apply btn bg-white text-brand-700 px-7 py-3.5 text-sm
+           hover:bg-brand-50 hover:-translate-y-0.5 hover:shadow-xl;
+  }
+  .btn-lg {
+    @apply px-8 py-4 text-base rounded-2xl;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase
+           tracking-[0.16em] text-brand-600;
+  }
+
+  .container-x {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  .surface-card {
+    @apply bg-white rounded-2xl border border-ink-100 shadow-card;
   }
 }
 
@@ -18,33 +68,27 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  .animate-fade-up {
-    animation: fadeUp 0.7s ease-out forwards;
+  .text-pretty {
+    text-wrap: pretty;
   }
-
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-
+  .delay-75 { animation-delay: 75ms; }
   .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
-}
+  .delay-500 { animation-delay: 500ms; }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(37,86,234,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37,86,234,0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .bg-grid-light {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
 }

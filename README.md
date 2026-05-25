@@ -1,52 +1,38 @@
-# Stellar Property Group Website
+# Stellar Property Group — Website
 
-Modern React + TypeScript website for Stellar Property Group - Chicago's premier property management company.
+Modern React + TypeScript marketing site for Stellar Property Group, Chicago's
+condominium, HOA, and townhome property management company.
 
-## Quick Start
+## Tech stack
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Set up Web3Forms (free email service):
-   - Go to [web3forms.com](https://web3forms.com)
-   - Get a free access key
-   - Replace `YOUR_WEB3FORMS_ACCESS_KEY` in:
-     - `src/components/ContactForm.tsx`
-     - `src/components/ViolationReportForm.tsx`
-
-3. Run locally:
-   ```bash
-   npm run dev
-   ```
-
-4. Build for production:
-   ```bash
-   npm run build
-   ```
-
-## Deploy to Netlify
-
-1. Push code to GitHub
-2. Connect repository to Netlify
-3. Build settings are already configured in `netlify.toml`
-4. No environment variables needed!
-
-## Features
-
-- Contact form with conditional fields
-- Violation report form
-- Board nomination application
-- Fully responsive design
-- Modern UI with Tailwind CSS
-- TypeScript for type safety
-
-## Tech Stack
-
-- React 18
-- TypeScript
+- React 18 + TypeScript
 - Vite
 - Tailwind CSS
-- Lucide Icons
-- Web3Forms (email service)
+- React Router 7
+- lucide-react icons
+
+## Local development
+
+1. Install dependencies: `npm install`
+2. Start the dev server: `npm run dev`
+3. Build for production: `npm run build`
+4. Type-check: `npm run typecheck`
+
+## Forms & email
+
+All three forms — **Contact**, **Violation Report**, and **Board Nomination** —
+submit directly to **mirsad@stellarpropertygroup.com** via FormSubmit.co.
+No API keys or environment variables are required.
+
+**One-time activation:** the first time a form is submitted after deployment,
+FormSubmit.co sends a confirmation email to mirsad@stellarpropertygroup.com.
+Click the activation link in that email once — every form delivers from then on.
+
+To change the destination address, edit the `FORM_ENDPOINT` constant near the
+top of `src/components/ContactForm.tsx`, `src/components/ViolationReportForm.tsx`,
+and `src/components/BoardNominationForm.tsx`.
+
+## Deployment
+
+Configured for Vercel via `vercel.json` (SPA routing). Push to the connected
+repository and Vercel builds and deploys automatically.

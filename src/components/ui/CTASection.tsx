@@ -10,36 +10,41 @@ interface CTASectionProps {
 }
 
 export function CTASection({
-  title = 'Ready to Elevate Your Community Management?',
-  description = 'Join 42 Chicago-area associations that trust Stellar Property Group. Contact us today for a free consultation and discover why we maintain a 96% client retention rate.',
+  title = 'Ready to elevate your community management?',
+  description = 'Join 42 Chicago-area associations that trust Stellar Property Group. Reach out for a free consultation and see why boards stay with us year after year.',
   primaryLink = '/contact',
   primaryText = 'Get a Free Consultation',
   secondaryText = '773.728.0652',
 }: CTASectionProps) {
   return (
-    <section className="bg-navy-800 py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
-          {title}
-        </h2>
-        <p className="text-lg text-navy-200 mb-10 max-w-2xl mx-auto">
-          {description}
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            to={primaryLink}
-            className="inline-flex items-center bg-gold-500 text-navy-900 px-8 py-4 rounded-lg font-semibold hover:bg-gold-400 transition-colors"
-          >
-            {primaryText}
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Link>
-          <a
-            href={`tel:${secondaryText.replace(/\./g, '')}`}
-            className="inline-flex items-center text-white border border-white/30 px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors"
-          >
-            <Phone className="w-5 h-5 mr-2" />
-            {secondaryText}
-          </a>
+    <section className="bg-white py-20 lg:py-28">
+      <div className="container-x">
+        <div className="relative overflow-hidden rounded-4xl bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 px-7 py-14 sm:px-12 lg:px-16 lg:py-20">
+          <div className="absolute inset-0 bg-grid-light opacity-70" />
+          <div className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full bg-brand-500/30 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-brand-400/20 blur-3xl" />
+
+          <div className="relative mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-extrabold leading-tight text-white text-balance sm:text-4xl">
+              {title}
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-brand-100 text-pretty">
+              {description}
+            </p>
+            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link to={primaryLink} className="btn-white btn-lg w-full sm:w-auto">
+                {primaryText}
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <a
+                href={`tel:${secondaryText.replace(/\./g, '')}`}
+                className="btn btn-lg w-full border border-white/25 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 sm:w-auto"
+              >
+                <Phone className="h-5 w-5" />
+                {secondaryText}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

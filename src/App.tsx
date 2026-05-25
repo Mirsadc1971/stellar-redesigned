@@ -32,8 +32,8 @@ function ScrollToTop() {
 
 function LoadingFallback() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-navy-600 border-t-transparent rounded-full animate-spin" />
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="h-9 w-9 animate-spin rounded-full border-[3px] border-brand-200 border-t-brand-600" />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { MapPin, ArrowRight, Phone, Building2 } from 'lucide-react';
+import { MapPin, Building2 } from 'lucide-react';
+import PageHero from '../components/ui/PageHero';
+import { CTASection } from '../components/ui/CTASection';
 import { neighborhoods } from '../data/neighborhoods';
 
 const sortedNeighborhoods = [...neighborhoods].sort((a, b) =>
@@ -10,6 +12,13 @@ const sortedNeighborhoods = [...neighborhoods].sort((a, b) =>
 const alphabet = Array.from(
   new Set(sortedNeighborhoods.map((n) => n.name[0].toUpperCase()))
 ).sort();
+
+const stats = [
+  { value: '24', label: 'Neighborhoods served' },
+  { value: '29+', label: 'Years of experience' },
+  { value: '42', label: 'Associations managed' },
+  { value: '24/7', label: 'Emergency service' },
+];
 
 export default function ServiceAreas() {
   const schemaMarkup = {
@@ -26,12 +35,12 @@ export default function ServiceAreas() {
       addressLocality: 'Chicago',
       addressRegion: 'IL',
       postalCode: '60625',
-      addressCountry: 'US'
+      addressCountry: 'US',
     },
     areaServed: neighborhoods.map((n) => ({
       '@type': 'Place',
-      name: `${n.name}, Chicago, IL`
-    }))
+      name: `${n.name}, Chicago, IL`,
+    })),
   };
 
   return (
@@ -50,88 +59,76 @@ export default function ServiceAreas() {
         <script type="application/ld+json">{JSON.stringify(schemaMarkup)}</script>
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-blue-200 mb-4">
-              <Link to="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-white">Service Areas</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Chicago Property Management Service Areas
-            </h1>
-            <p className="text-xl text-blue-100 mb-6">
-              Stellar Property Group proudly serves {neighborhoods.length} neighborhoods across
-              Chicago. From lakefront high-rises to neighborhood townhome communities, we deliver
-              professional management wherever you call home.
-            </p>
-            <div className="flex items-center gap-3 text-blue-200">
-              <Building2 className="w-5 h-5" />
-              <span>
-                {neighborhoods.length} Neighborhoods &bull; Condominiums &bull; HOAs &bull; Townhomes
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        align="left"
+        eyebrow="Where We Serve"
+        breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Service Areas' }]}
+        title="Chicago property management service areas"
+        description={`Stellar Property Group proudly serves ${neighborhoods.length} neighborhoods across Chicago. From lakefront high-rises to neighborhood townhome communities, we deliver professional management wherever you call home.`}
+      >
+        <span className="inline-flex items-center gap-2 rounded-xl border border-brand-100 bg-white px-4 py-3 text-sm font-semibold text-ink-700 shadow-xs">
+          <Building2 className="h-4 w-4 text-brand-600" />
+          {neighborhoods.length} Neighborhoods · Condominiums · HOAs · Townhomes
+        </span>
+      </PageHero>
 
-      {/* Alphabet Quick Nav */}
-      <section className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Alphabet quick nav */}
+      <div className="sticky top-20 z-30 border-y border-ink-100 bg-white/95 backdrop-blur-md">
+        <div className="container-x">
           <div className="flex flex-wrap gap-1 py-3">
             {alphabet.map((letter) => (
               <a
                 key={letter}
                 href={`#letter-${letter}`}
-                className="w-8 h-8 flex items-center justify-center text-sm font-semibold text-blue-700 hover:bg-blue-50 rounded transition-colors"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold text-brand-700 transition-colors hover:bg-brand-50"
               >
                 {letter}
               </a>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Neighborhoods Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Neighborhoods grid */}
+      <section className="bg-ink-50 py-16 lg:py-20">
+        <div className="container-x">
           {alphabet.map((letter) => {
             const letterNeighborhoods = sortedNeighborhoods.filter(
               (n) => n.name[0].toUpperCase() === letter
             );
             return (
-              <div key={letter} id={`letter-${letter}`} className="mb-12 scroll-mt-16">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-blue-700 pb-2 inline-block">
-                  {letter}
+              <div key={letter} id={`letter-${letter}`} className="mb-12 scroll-mt-36">
+                <h2 className="mb-6 inline-flex items-center gap-3 font-display text-xl font-extrabold text-ink-900">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600 text-white">
+                    {letter}
+                  </span>
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {letterNeighborhoods.map((neighborhood) => (
                     <Link
                       key={neighborhood.slug}
                       to={`/property-management-${neighborhood.slug}`}
-                      className="group bg-white rounded-lg p-5 shadow-sm hover:shadow-md hover:border-blue-200 border border-gray-100 transition-all duration-300"
+                      className="group rounded-2xl border border-ink-100 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-card-hover"
                     >
                       <div className="flex items-start gap-3">
-                        <MapPin className="w-5 h-5 text-blue-700 mt-0.5 flex-shrink-0" />
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+                          <MapPin className="h-5 w-5" />
+                        </span>
                         <div className="min-w-0">
-                          <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                          <h3 className="font-display font-bold text-ink-900 transition-colors group-hover:text-brand-700">
                             {neighborhood.name}
                           </h3>
-                          <div className="flex flex-wrap gap-1.5 mt-2">
+                          <div className="mt-2 flex flex-wrap gap-1.5">
                             {neighborhood.propertyTypes.slice(0, 3).map((type) => (
                               <span
                                 key={type}
-                                className="bg-gray-100 text-gray-500 px-2 py-0.5 rounded text-xs capitalize"
+                                className="rounded-md bg-ink-50 px-2 py-0.5 text-xs font-medium capitalize text-ink-500"
                               >
                                 {type}
                               </span>
                             ))}
                           </div>
-                          <p className="text-xs text-gray-400 mt-2">
+                          <p className="mt-2 text-xs text-ink-400">
                             ZIP: {neighborhood.zipCodes.join(', ')}
                           </p>
                         </div>
@@ -145,58 +142,30 @@ export default function ServiceAreas() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-blue-700 mb-2">24</div>
-              <div className="text-gray-600 font-medium">Neighborhoods Served</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-700 mb-2">29+</div>
-              <div className="text-gray-600 font-medium">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-700 mb-2">42</div>
-              <div className="text-gray-600 font-medium">Associations Managed</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-700 mb-2">24/7</div>
-              <div className="text-gray-600 font-medium">Emergency Service</div>
-            </div>
+      {/* Stats */}
+      <section className="bg-white py-16 lg:py-20">
+        <div className="container-x">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+            {stats.map(({ value, label }) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-ink-100 bg-gradient-to-b from-brand-50 to-white p-7 text-center"
+              >
+                <div className="font-display text-4xl font-extrabold text-brand-600 lg:text-5xl">
+                  {value}
+                </div>
+                <div className="mt-1.5 text-sm font-medium text-ink-500">{label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Don't See Your Neighborhood?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            We're always expanding our service area across Chicagoland. Contact us to discuss your
-            property management needs — we'd love to see how we can help your community.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors"
-            >
-              Get a Free Proposal
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a
-              href="tel:7737280652"
-              className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors"
-            >
-              <Phone className="w-5 h-5" />
-              Call 773.728.0652
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Don't see your neighborhood?"
+        description="We're always expanding our service area across Chicagoland. Contact us to discuss your property management needs — we'd love to help your community."
+        primaryText="Get a Free Proposal"
+      />
     </>
   );
 }

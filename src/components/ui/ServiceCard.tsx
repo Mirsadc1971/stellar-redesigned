@@ -12,20 +12,16 @@ export default function ServiceCard({ icon: Icon, title, description, href }: Se
   return (
     <Link
       to={href}
-      className="group block bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-navy-100/50"
+      className="group relative flex flex-col rounded-2xl border border-ink-100 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card-hover"
     >
-      <div className="w-14 h-14 bg-navy-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-navy-700 transition-colors duration-300">
-        <Icon className="w-7 h-7 text-navy-600 group-hover:text-gold-400 transition-colors duration-300" />
+      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
+        <Icon className="h-6 w-6" />
       </div>
-      <h3 className="text-lg font-bold text-navy-800 mb-3 group-hover:text-navy-900 transition-colors">
-        {title}
-      </h3>
-      <p className="text-sm text-navy-500 leading-relaxed mb-5">
-        {description}
-      </p>
-      <span className="inline-flex items-center gap-2 text-sm font-semibold text-navy-600 group-hover:text-gold-600 transition-colors duration-300">
-        Learn More
-        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+      <h3 className="font-display text-lg font-bold text-ink-900">{title}</h3>
+      <p className="mt-2.5 flex-1 text-sm leading-relaxed text-ink-500">{description}</p>
+      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+        Learn more
+        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </span>
     </Link>
   );
