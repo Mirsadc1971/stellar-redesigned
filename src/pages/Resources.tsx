@@ -270,7 +270,7 @@ export default function Resources() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-20 lg:py-28">
+      <section id="faq" className="scroll-mt-24 bg-white py-20 lg:py-28">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
           <SectionHeading
             align="center"
