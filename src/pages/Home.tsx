@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
   Building2, Phone, ArrowRight, CheckCircle, Users, Home as HomeIcon,
-  TrendingUp, Wrench, Award, Star, MapPin, ChevronRight, Mail, ShieldCheck,
+  TrendingUp, Wrench, Award, Star, MapPin, ChevronRight, Mail, ShieldCheck, Landmark,
 } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
 
@@ -434,6 +434,28 @@ export default function Home() {
       {/* ── Contact CTA ────────────────────────────────────────── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="container-x">
+          <Link
+            to="/resources"
+            className="group mb-10 flex flex-col items-start gap-4 rounded-2xl border border-gold-200 bg-gold-50 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card sm:flex-row sm:items-center sm:justify-between sm:p-7"
+          >
+            <div className="flex items-start gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-100 text-gold-600">
+                <Landmark className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-display text-base font-bold text-ink-900">
+                  Owners: pay assessments with no processing fees
+                </p>
+                <p className="mt-0.5 text-sm text-ink-500">
+                  Use your bank's free Bill Pay service — see how to set it up.
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-brand-600">
+              View Bill Pay details
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </Link>
           <div className="relative overflow-hidden rounded-4xl bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 px-7 py-14 sm:px-12 lg:px-16 lg:py-16">
             <div className="absolute inset-0 bg-grid-light opacity-70" />
             <div className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-brand-500/30 blur-3xl" />

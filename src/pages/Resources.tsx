@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
   CreditCard, AlertTriangle, Users, MessageSquare, ArrowRight,
-  ExternalLink, ChevronDown, HelpCircle,
+  ExternalLink, ChevronDown, HelpCircle, CheckCircle2, Landmark,
 } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -158,6 +158,64 @@ export default function Resources() {
                 </button>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Bank Bill Pay */}
+      <section id="bill-pay" className="scroll-mt-24 bg-white py-20 lg:py-28">
+        <div className="container-x">
+          <div className="grid items-start gap-10 lg:grid-cols-5 lg:gap-12">
+            <div className="lg:col-span-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-gold-100 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+                <CheckCircle2 className="h-4 w-4" />
+                No Processing Fees
+              </span>
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-ink-900 sm:text-4xl">
+                Free Assessment Payment Option: Bank Bill Pay
+              </h2>
+              <p className="mt-4 leading-relaxed text-ink-500">
+                Owners are encouraged to use their personal bank's Bill Pay service to pay
+                monthly assessments. This is usually the easiest way to avoid credit card or
+                online processing fees.
+              </p>
+            </div>
+
+            <div className="lg:col-span-3">
+              <div className="rounded-2xl border border-ink-100 bg-ink-50 p-7 shadow-soft sm:p-9">
+                <h3 className="flex items-center gap-3 font-display text-lg font-bold text-ink-900">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-600 text-white">
+                    <Landmark className="h-5 w-5" />
+                  </span>
+                  When setting up Bill Pay, please use:
+                </h3>
+                <dl className="mt-6 divide-y divide-ink-200/70">
+                  <div className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+                    <dt className="w-44 shrink-0 text-xs font-bold uppercase tracking-[0.12em] text-ink-400">Payee</dt>
+                    <dd className="text-sm font-medium text-ink-800">"Your Association Name"</dd>
+                  </div>
+                  <div className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+                    <dt className="w-44 shrink-0 text-xs font-bold uppercase tracking-[0.12em] text-ink-400">Mailing Address</dt>
+                    <dd className="text-sm font-medium text-ink-800">5107 N. Western Avenue, Suite 1S, Chicago, IL 60625</dd>
+                  </div>
+                  <div className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+                    <dt className="w-44 shrink-0 text-xs font-bold uppercase tracking-[0.12em] text-ink-400">Memo</dt>
+                    <dd className="text-sm font-medium text-ink-800">Association 4-number address (for example "1740") and Unit Number ###</dd>
+                  </div>
+                </dl>
+                <div className="mt-6 space-y-3 border-t border-ink-200/70 pt-6 text-sm leading-relaxed text-ink-500">
+                  <p>
+                    Your bank will mail the payment directly to Stellar Property Management.
+                    Please allow enough mailing time so your assessment is received before the
+                    due date.
+                  </p>
+                  <p>
+                    Credit card or online payment processing fees, if any, are charged directly
+                    by the payment processor and are not retained by Stellar Property Management.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
