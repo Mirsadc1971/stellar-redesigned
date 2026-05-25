@@ -4,7 +4,7 @@ export const whyCondoBoardsFail = {
   metaDescription:
     'The most common reason condo and HOA boards fail is a breakdown of trust and transparency. Learn the warning signs of board dysfunction and the practical fixes that restore a healthy board.',
   date: '2023-03-14',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Board Governance',
   readTime: '6 min read',
   excerpt:
@@ -52,6 +52,6 @@ export const whyCondoBoardsFail = {
 <li><strong>Share the load.</strong> Use committees and professional support so no single volunteer burns out.</li>
 </ul>
 
-<p>Strong boards are not the ones that never disagree — they are the ones that disagree in a structured, transparent process that owners can see and respect. Professional <a href="/services/board-support">board support</a> from Stellar Property Group gives boards the meeting structure, documentation, and guidance to operate that way. To strengthen your board, <a href="/contact">get in touch</a>.</p>
+<p>Strong boards are not the ones that never disagree — they are the ones that disagree in a structured, transparent process that owners can see and respect. Professional <a href="/services/board-support">board support</a> from Stellar Property Management gives boards the meeting structure, documentation, and guidance to operate that way. To strengthen your board, <a href="/contact">get in touch</a>.</p>
 `,
 };

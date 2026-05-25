@@ -88,10 +88,10 @@ export default function Services() {
   return (
     <>
       <Helmet>
-        <title>Property Management Services | Stellar Property Group</title>
+        <title>Property Management Services | Stellar Property Management</title>
         <meta
           name="description"
-          content="Full-service property management for Chicago condominium associations, HOAs, and townhome communities. From financial oversight to maintenance coordination, Stellar Property Group delivers comprehensive solutions tailored to your community."
+          content="Full-service property management for Chicago condominium associations, HOAs, and townhome communities. From financial oversight to maintenance coordination, Stellar Property Management delivers comprehensive solutions tailored to your community."
         />
         <link rel="canonical" href="https://stellarpropertygroup.com/services" />
       </Helmet>
@@ -150,7 +150,7 @@ export default function Services() {
 
       <CTASection
         title="Ready to get started?"
-        description="Discover why 42 Chicago-area associations trust Stellar Property Group. Reach out today for a free, no-obligation consultation."
+        description="Discover why 42 Chicago-area associations trust Stellar Property Management. Reach out today for a free, no-obligation consultation."
       />
     </>
   );

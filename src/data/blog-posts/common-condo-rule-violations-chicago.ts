@@ -4,7 +4,7 @@ export const commonCondoViolationsChicago = {
   metaDescription:
     'From smoking and short-term rentals to balcony storage and hallway clutter, here are the most common condo rule violations in Chicago buildings — and how boards should handle them fairly.',
   date: '2023-11-09',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Community Standards',
   readTime: '6 min read',
   excerpt:
@@ -46,6 +46,6 @@ export const commonCondoViolationsChicago = {
 <p>It is tempting to wave off minor infractions, but they compound. Visible disorder lowers the impression — and ultimately the value — of the whole building. Balcony grills and blocked hallways are genuine fire hazards. And inconsistent enforcement quietly teaches owners that the rules are optional, which makes the next violation harder to address. Small problems handled early stay small.</p>
 
 <h2>How Boards Should Handle Violations</h2>
-<p>Effective enforcement is calm, consistent, and documented. That means a clearly written set of rules that every owner has received, a defined reporting channel, objective documentation of each violation, and a graduated process — notice, opportunity to be heard, then fines — applied identically to everyone. Stellar Property Group's <a href="/services/violation-management">violation management</a> gives boards that structure, and residents can file a formal report through the form on our <a href="/resources">owner resources</a> page. To set up a fair, defensible process, <a href="/contact">contact our team</a>.</p>
+<p>Effective enforcement is calm, consistent, and documented. That means a clearly written set of rules that every owner has received, a defined reporting channel, objective documentation of each violation, and a graduated process — notice, opportunity to be heard, then fines — applied identically to everyone. Stellar Property Management's <a href="/services/violation-management">violation management</a> gives boards that structure, and residents can file a formal report through the form on our <a href="/resources">owner resources</a> page. To set up a fair, defensible process, <a href="/contact">contact our team</a>.</p>
 `,
 };

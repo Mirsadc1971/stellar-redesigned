@@ -5,7 +5,7 @@ export const condoPropertyManagementChicago = {
   metaDescription:
     'Learn what Chicago condo board members should expect from a professional property management company, including financial oversight, maintenance coordination, legal compliance, and transparent communication.',
   date: '2024-11-15',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Board Education',
   readTime: '8 min read',
   excerpt:
@@ -122,8 +122,8 @@ export const condoPropertyManagementChicago = {
 
 <p>Hiring a property management company is one of the most consequential decisions a condo board will make. The right partner will protect your building's value, reduce the burden on volunteer board members, ensure legal compliance, and contribute to a thriving community. The wrong one will create headaches, erode trust, and ultimately cost the association money.</p>
 
-<p>At Stellar Property Group, we specialize in condominium property management throughout Chicago and the surrounding suburbs. Our team combines deep local expertise with transparent financial management, proactive maintenance programs, and technology-driven communication to deliver the level of service your board and your residents deserve. If your association is considering a change or evaluating your current management relationship, we would welcome the opportunity to discuss how we can help.</p>
+<p>At Stellar Property Management, we specialize in condominium property management throughout Chicago and the surrounding suburbs. Our team combines deep local expertise with transparent financial management, proactive maintenance programs, and technology-driven communication to deliver the level of service your board and your residents deserve. If your association is considering a change or evaluating your current management relationship, we would welcome the opportunity to discuss how we can help.</p>
 
-<p><strong><a href="/contact">Contact us today</a> to schedule a free consultation and learn why Chicago boards trust Stellar Property Group to manage their communities.</strong></p>
+<p><strong><a href="/contact">Contact us today</a> to schedule a free consultation and learn why Chicago boards trust Stellar Property Management to manage their communities.</strong></p>
 `,
 };

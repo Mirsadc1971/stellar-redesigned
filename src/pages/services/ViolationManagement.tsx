@@ -6,7 +6,7 @@ import ServiceLayout from '../../components/ui/ServiceLayout';
 export default function ViolationManagement() {
   return (
     <ServiceLayout
-      seoTitle="Violation Management & Enforcement | Stellar Property Group"
+      seoTitle="Violation Management & Enforcement | Stellar Property Management"
       seoDescription="Professional violation management and enforcement for Chicago community associations. Fair due process, progressive enforcement, violation tracking, and Illinois compliance. Protecting community standards since 2007."
       canonical="https://stellarpropertygroup.com/services/violation-management"
       eyebrow="Enforcement Services"
@@ -14,7 +14,7 @@ export default function ViolationManagement() {
       heroDescription="Protecting your community standards through fair, consistent, and legally compliant enforcement. Our systematic approach to violation management preserves property values while respecting the rights of every homeowner."
       introHeading="Fair enforcement that protects everyone"
       introParagraphs={[
-        'Community rules exist for good reason: they protect property values, maintain quality of life, and ensure every resident can enjoy their home in peace. But enforcement without proper process creates conflict, legal exposure, and community division. Stellar Property Group brings a balanced approach to violation management that upholds your community standards while treating every homeowner with fairness and respect.',
+        'Community rules exist for good reason: they protect property values, maintain quality of life, and ensure every resident can enjoy their home in peace. But enforcement without proper process creates conflict, legal exposure, and community division. Stellar Property Management brings a balanced approach to violation management that upholds your community standards while treating every homeowner with fairness and respect.',
         'Our violation management system is built on three principles: consistency, transparency, and due process. Every violation is documented objectively, every homeowner receives proper notice and the opportunity to be heard, and every enforcement action follows a progressive discipline framework that the board has approved in advance. This systematic approach protects your association from legal challenges while building community trust.',
         'Since 2007, we have helped 42 Chicago-area associations maintain their community standards through professional violation management. Our experience with Illinois community association law ensures your enforcement procedures comply with state requirements, your governing documents are properly applied, and your board is protected from liability throughout the process.',
       ]}

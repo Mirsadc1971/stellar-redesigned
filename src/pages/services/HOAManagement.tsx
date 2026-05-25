@@ -6,14 +6,14 @@ import ServiceLayout from '../../components/ui/ServiceLayout';
 export default function HOAManagement() {
   return (
     <ServiceLayout
-      seoTitle="HOA Management Services in Chicago | Stellar Property Group"
+      seoTitle="HOA Management Services in Chicago | Stellar Property Management"
       seoDescription="Professional HOA management for Chicago-area homeowners associations. CC&R enforcement, community engagement, landscaping coordination, architectural review, and full-service association management since 2007."
       canonical="https://stellarpropertygroup.com/services/hoa-management"
       heroTitle="HOA Management Services in Chicago"
       heroDescription="Building stronger neighborhoods through professional homeowners association management. From established suburbs to new developments across Chicagoland, we create communities where people are proud to live."
       introHeading="Neighborly management that builds real community"
       introParagraphs={[
-        'Homeowners associations thrive when residents feel connected, informed, and proud of where they live. At Stellar Property Group, our HOA management goes beyond the administrative basics. We partner with your board to create vibrant, well-maintained neighborhoods where property values grow and neighbors become friends.',
+        'Homeowners associations thrive when residents feel connected, informed, and proud of where they live. At Stellar Property Management, our HOA management goes beyond the administrative basics. We partner with your board to create vibrant, well-maintained neighborhoods where property values grow and neighbors become friends.',
         'Since 2007, we have managed single-family home communities, planned unit developments, and mixed-use neighborhoods throughout Chicago and the surrounding suburbs. Our approach combines proactive common area maintenance, transparent financial management, and thoughtful community programming that transforms a collection of homes into a true community.',
         'Every HOA we manage receives a dedicated community manager who attends board meetings, coordinates vendors, handles homeowner communications, and ensures your CC&Rs are enforced fairly and consistently. We bring institutional knowledge and professional resources while never losing sight of the personal relationships that make neighborhoods special.',
       ]}

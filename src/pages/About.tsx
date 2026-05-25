@@ -69,10 +69,10 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Stellar Property Group | Chicago Property Management Since 2007</title>
+        <title>About Stellar Property Management | Chicago Property Management Since 2007</title>
         <meta
           name="description"
-          content="Learn about Stellar Property Group — Chicago's trusted property management company since 2007. 42 associations, 2,450+ units, and a 96% client retention rate. CAI, IREM, IDFPR, and CCIM certified."
+          content="Learn about Stellar Property Management — Chicago's trusted property management company since 2007. 42 associations, 2,450+ units, and a 96% client retention rate. CAI, IREM, IDFPR, and CCIM certified."
         />
         <link rel="canonical" href="https://stellarpropertygroup.com/about" />
       </Helmet>
@@ -80,7 +80,7 @@ export default function About() {
       <PageHero
         eyebrow="Serving Chicago Since 2007"
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'About' }]}
-        title="About Stellar Property Group"
+        title="About Stellar Property Management"
         description="A locally owned, professionally credentialed property management firm dedicated exclusively to Chicago condominiums, HOAs, and townhome communities."
       />
 
@@ -95,7 +95,7 @@ export default function About() {
               />
               <div className="mt-6 space-y-4 leading-relaxed text-ink-500">
                 <p>
-                  Stellar Property Group was founded in 2007 with a clear mission: deliver
+                  Stellar Property Management was founded in 2007 with a clear mission: deliver
                   property management that Chicago condo boards, HOAs, and townhome
                   associations actually deserve. At the time, most firms treated community
                   management as a side business. We made it our only business.
@@ -127,7 +127,7 @@ export default function About() {
               <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-100 to-brand-50" />
               <img
                 src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1100"
-                alt="Premium Chicago residential building managed by Stellar Property Group"
+                alt="Premium Chicago residential building managed by Stellar Property Management"
                 className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-card-hover"
                 loading="lazy"
               />

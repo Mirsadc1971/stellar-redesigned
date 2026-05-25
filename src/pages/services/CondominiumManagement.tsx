@@ -6,7 +6,7 @@ import ServiceLayout from '../../components/ui/ServiceLayout';
 export default function CondominiumManagement() {
   return (
     <ServiceLayout
-      seoTitle="Condominium Management Services in Chicago | Stellar Property Group"
+      seoTitle="Condominium Management Services in Chicago | Stellar Property Management"
       seoDescription="Full-service condominium management in Chicago and the North Shore. Illinois Condo Property Act compliance, board governance, financial oversight, and 24/7 emergency support. Serving 42 associations since 2007."
       canonical="https://stellarpropertygroup.com/services/condominium-management"
       eyebrow="Property Management"
@@ -14,7 +14,7 @@ export default function CondominiumManagement() {
       heroDescription="Expert management for Chicago-area condominium associations. From high-rise towers on Lake Shore Drive to boutique buildings in Lincoln Park, we deliver the financial discipline, legal compliance, and responsive service your community deserves."
       introHeading="Full-service condo management built on Chicago expertise"
       introParagraphs={[
-        'Managing a condominium association in Illinois requires deep knowledge of state-specific regulations, strong financial stewardship, and the ability to balance the needs of diverse unit owners. Since 2007, Stellar Property Group has provided Chicago-area condominiums with the professional management they need to protect property values, maintain common elements, and foster thriving residential communities.',
+        'Managing a condominium association in Illinois requires deep knowledge of state-specific regulations, strong financial stewardship, and the ability to balance the needs of diverse unit owners. Since 2007, Stellar Property Management has provided Chicago-area condominiums with the professional management they need to protect property values, maintain common elements, and foster thriving residential communities.',
         'Our team holds certifications from the Community Associations Institute (CAI) and the Institute of Real Estate Management (IREM), ensuring your association benefits from industry best practices and cutting-edge management strategies. We currently serve 42 associations across Chicago and the North Shore, maintaining a 96% client retention rate that reflects our commitment to excellence.',
         'Whether your building has 10 units or 500, our approach is the same: proactive management that prevents problems before they arise, transparent communication that keeps owners informed, and financial planning that positions your association for long-term stability. We assign a dedicated property manager to each community so you always have a knowledgeable point of contact.',
       ]}

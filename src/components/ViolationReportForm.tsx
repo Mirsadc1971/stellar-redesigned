@@ -493,7 +493,7 @@ export function ViolationReportForm() {
               </h4>
             </div>
             <p className="leading-relaxed text-ink-500">
-              Stellar Property Group follows strict due process procedures including written notice
+              Stellar Property Management follows strict due process procedures including written notice
               of alleged violations, opportunity to respond or cure the violation, formal hearing
               before the board if requested, and progressive enforcement from warnings to fines.
               All enforcement actions are documented and applied consistently across all residents.

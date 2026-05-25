@@ -4,7 +4,7 @@ export const aiInCondoManagement = {
   metaDescription:
     'Artificial intelligence is entering condo and HOA management — from violation processing to owner communication. Learn the real benefits, the risks, and how boards should use AI responsibly.',
   date: '2025-10-07',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Technology',
   readTime: '6 min read',
   excerpt:
@@ -45,6 +45,6 @@ export const aiInCondoManagement = {
 <p>AI is powerful, but it is not infallible. It can produce confident answers that are simply wrong, which is dangerous when the subject is a legal requirement or an enforcement decision. Anything touching the law — rule enforcement, fair-housing questions, governing-document interpretation — still demands human judgment and, where appropriate, an attorney. AI tools also handle sensitive owner data, so boards must understand how a vendor stores and protects that information. The core principle is simple: AI assists, but accountable people decide.</p>
 
 <h2>How Boards Should Approach AI</h2>
-<p>Treat AI as a capable assistant under firm human oversight. Use it to speed routine work, but keep legal, financial, and enforcement decisions with people and counsel. Vet any vendor on data privacy and security before adopting their tools. A professional management partner that adopts technology thoughtfully — and stays accountable for the results — gives boards the best of both worlds. To talk about modern, well-supported management for your association, <a href="/contact">contact Stellar Property Group</a>.</p>
+<p>Treat AI as a capable assistant under firm human oversight. Use it to speed routine work, but keep legal, financial, and enforcement decisions with people and counsel. Vet any vendor on data privacy and security before adopting their tools. A professional management partner that adopts technology thoughtfully — and stays accountable for the results — gives boards the best of both worlds. To talk about modern, well-supported management for your association, <a href="/contact">contact Stellar Property Management</a>.</p>
 `,
 };

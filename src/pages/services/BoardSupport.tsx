@@ -6,7 +6,7 @@ import ServiceLayout from '../../components/ui/ServiceLayout';
 export default function BoardSupport() {
   return (
     <ServiceLayout
-      seoTitle="Board Support & Governance Services | Stellar Property Group"
+      seoTitle="Board Support & Governance Services | Stellar Property Management"
       seoDescription="Professional board support and governance services for Chicago community associations. Meeting coordination, strategic planning, new board member orientation, and document management. CAI-certified since 2007."
       canonical="https://stellarpropertygroup.com/services/board-support"
       eyebrow="Governance Services"
@@ -15,7 +15,7 @@ export default function BoardSupport() {
       introHeading="Professional support for effective board governance"
       introParagraphs={[
         'Serving on a community association board is a significant responsibility. Board members are volunteer leaders who must navigate complex legal requirements, manage substantial budgets, and make decisions that affect their neighbors’ daily lives and property values. Without professional support, board service can quickly become overwhelming, leading to burnout, poor decisions, and community conflict.',
-        'Stellar Property Group provides comprehensive board support services that make effective governance achievable for every board member, regardless of their experience level. From preparing detailed meeting agendas and maintaining accurate minutes to providing governance guidance and facilitating strategic planning sessions, we give your board the infrastructure it needs to lead with confidence.',
+        'Stellar Property Management provides comprehensive board support services that make effective governance achievable for every board member, regardless of their experience level. From preparing detailed meeting agendas and maintaining accurate minutes to providing governance guidance and facilitating strategic planning sessions, we give your board the infrastructure it needs to lead with confidence.',
         'Our CAI-certified management professionals bring deep knowledge of community association best practices, Illinois legal requirements, and proven governance frameworks. We serve as a trusted resource for your board, providing objective advice, facilitating difficult conversations, and ensuring every decision is properly documented and implemented.',
       ]}
       whyHeading="Board support highlights"

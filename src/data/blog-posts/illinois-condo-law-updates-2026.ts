@@ -4,7 +4,7 @@ export const illinoisCondoLawUpdates2026 = {
   metaDescription:
     'A practical 2026 guide to Illinois condominium law for board members — covering the Condominium Property Act, owner record requests, meeting notices, elections, reserves, and insurance.',
   date: '2026-02-18',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Legal & Compliance',
   readTime: '8 min read',
   excerpt:
@@ -47,6 +47,6 @@ export const illinoisCondoLawUpdates2026 = {
 
 <h2>Where Boards Should Focus in 2026</h2>
 <p>Legislation and case law evolve every year, and the details that apply to your building can change. No article is a substitute for advice from a licensed Illinois community association attorney, and boards should confirm any current-session legislative changes with counsel or the <strong>Community Associations Institute (CAI) Illinois Chapter</strong>. What does not change is the value of disciplined process: accurate records, proper notice, transparent finances, and consistent enforcement.</p>
-<p>A professional management partner keeps those systems running so the board can focus on decisions rather than paperwork. <a href="/services/condominium-management">Stellar Property Group</a> helps Chicago-area boards stay compliant and organized. To talk through your association's needs, <a href="/contact">contact our team</a>.</p>
+<p>A professional management partner keeps those systems running so the board can focus on decisions rather than paperwork. <a href="/services/condominium-management">Stellar Property Management</a> helps Chicago-area boards stay compliant and organized. To talk through your association's needs, <a href="/contact">contact our team</a>.</p>
 `,
 };

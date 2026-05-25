@@ -4,7 +4,7 @@ export const condoSpecialAssessmentsIllinois = {
   metaDescription:
     'Why special assessments are surging for Illinois condo owners, whether a board can force one, whether you can refuse to pay, and how associations can avoid the special-assessment spiral.',
   date: '2024-09-24',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Financial Planning',
   readTime: '7 min read',
   excerpt:
@@ -50,6 +50,6 @@ export const condoSpecialAssessmentsIllinois = {
 
 <h2>How Boards Can Avoid the Special-Assessment Spiral</h2>
 <p>The associations that rarely need special assessments are the ones that plan. That means commissioning and regularly updating a professional reserve study, funding reserves at a realistic level, scheduling capital projects before they become emergencies, and communicating openly with owners about what is coming and why. Transparent, forward-looking <a href="/services/financial-management">financial management</a> turns a feared surprise into a manageable line item.</p>
-<p>Stellar Property Group helps Chicago-area boards build budgets and reserve plans that prevent financial shocks. To review your association's footing, <a href="/contact">request a consultation</a>.</p>
+<p>Stellar Property Management helps Chicago-area boards build budgets and reserve plans that prevent financial shocks. To review your association's footing, <a href="/contact">request a consultation</a>.</p>
 `,
 };

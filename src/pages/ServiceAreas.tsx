@@ -24,7 +24,7 @@ export default function ServiceAreas() {
   const schemaMarkup = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Stellar Property Group',
+    name: 'Stellar Property Management',
     description:
       'Professional property management serving 24 Chicago neighborhoods. Condominium, HOA, and townhome management.',
     url: 'https://www.stellarpropertygroup.com/service-areas',
@@ -46,10 +46,10 @@ export default function ServiceAreas() {
   return (
     <>
       <Helmet>
-        <title>Chicago Property Management Service Areas | Stellar Property Group</title>
+        <title>Chicago Property Management Service Areas | Stellar Property Management</title>
         <meta
           name="description"
-          content="Stellar Property Group provides professional condominium, HOA, and townhome management across 24 Chicago neighborhoods. Find your neighborhood and get a free quote."
+          content="Stellar Property Management provides professional condominium, HOA, and townhome management across 24 Chicago neighborhoods. Find your neighborhood and get a free quote."
         />
         <meta
           name="keywords"
@@ -64,7 +64,7 @@ export default function ServiceAreas() {
         eyebrow="Where We Serve"
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Service Areas' }]}
         title="Chicago property management service areas"
-        description={`Stellar Property Group proudly serves ${neighborhoods.length} neighborhoods across Chicago. From lakefront high-rises to neighborhood townhome communities, we deliver professional management wherever you call home.`}
+        description={`Stellar Property Management proudly serves ${neighborhoods.length} neighborhoods across Chicago. From lakefront high-rises to neighborhood townhome communities, we deliver professional management wherever you call home.`}
       >
         <span className="inline-flex items-center gap-2 rounded-xl border border-brand-100 bg-white px-4 py-3 text-sm font-semibold text-ink-700 shadow-xs">
           <Building2 className="h-4 w-4 text-brand-600" />

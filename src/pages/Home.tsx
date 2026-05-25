@@ -59,7 +59,7 @@ export default function Home() {
   const schemaMarkup = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Stellar Property Group',
+    name: 'Stellar Property Management',
     description:
       'Professional property management services for Chicago and North Shore communities. Specializing in condominium, HOA, and townhome management since 2007.',
     url: 'https://stellarpropertygroup.com',
@@ -81,10 +81,10 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Stellar Property Group | Chicago's Premier Property Management Company</title>
+        <title>Stellar Property Management | Chicago's Premier Property Management Company</title>
         <meta name="description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations. 42 associations served, 96% retention rate. Trusted since 2007. Get a free quote." />
         <link rel="canonical" href="https://stellarpropertygroup.com" />
-        <meta property="og:title" content="Stellar Property Group | Chicago Property Management" />
+        <meta property="og:title" content="Stellar Property Management | Chicago Property Management" />
         <meta property="og:description" content="Professional property management for Chicago condominiums, HOAs, and townhome associations since 2007." />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify(schemaMarkup)}</script>
@@ -140,7 +140,7 @@ export default function Home() {
               <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-100 to-brand-50" />
               <img
                 src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1100"
-                alt="Premium Chicago residential building managed by Stellar Property Group"
+                alt="Premium Chicago residential building managed by Stellar Property Management"
                 className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-card-hover"
                 loading="eager"
               />
@@ -254,7 +254,7 @@ export default function Home() {
               <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-100 to-brand-50" />
               <img
                 src="https://images.pexels.com/photos/1560932/pexels-photo-1560932.jpeg?auto=compress&cs=tinysrgb&w=1100"
-                alt="Chicago skyline showcasing the communities Stellar Property Group serves"
+                alt="Chicago skyline showcasing the communities Stellar Property Management serves"
                 className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-card-hover"
                 loading="lazy"
               />
@@ -289,7 +289,7 @@ export default function Home() {
               />
               <div className="mt-6 space-y-4 text-ink-500 leading-relaxed">
                 <p>
-                  Since 2007, Stellar Property Group has specialized exclusively in Chicago and
+                  Since 2007, Stellar Property Management has specialized exclusively in Chicago and
                   North Shore property management — condominiums, HOAs, and townhomes only.
                   That focus isn't a limitation; it's why we outperform generalist firms.
                 </p>

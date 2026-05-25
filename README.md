@@ -1,6 +1,6 @@
-# Stellar Property Group — Website
+# Stellar Property Management — Website
 
-Modern React + TypeScript marketing site for Stellar Property Group, Chicago's
+Modern React + TypeScript marketing site for Stellar Property Management, Chicago's
 condominium, HOA, and townhome property management company.
 
 ## Tech stack

@@ -4,7 +4,7 @@ export const selfManagedCondoProblems = {
   metaDescription:
     'Self-managed condo associations save on management fees but carry hidden risks — collections gaps, compliance exposure, weak accounting, and volunteer burnout. Learn when to hire a manager.',
   date: '2024-06-11',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Property Management',
   readTime: '7 min read',
   excerpt:
@@ -45,6 +45,6 @@ export const selfManagedCondoProblems = {
 <h2>When an Association Should Bring In a Manager</h2>
 <p>Self-management has a natural shelf life. Clear signals that it is time to bring in a professional include chronic delinquencies, visible board burnout, a looming capital project, a compliance scare, or simple growth in the size and complexity of the building. Professional management restores collections discipline, real financial controls, regulatory compliance, vendor leverage, and — critically — continuity that does not depend on a single volunteer.</p>
 
-<p>The goal is not to take authority away from the board. It is to give the board reliable execution and expert guidance so its decisions actually get carried out. To weigh whether professional <a href="/services/condominium-management">condominium management</a> is right for your association, <a href="/contact">contact Stellar Property Group</a> for a straightforward conversation.</p>
+<p>The goal is not to take authority away from the board. It is to give the board reliable execution and expert guidance so its decisions actually get carried out. To weigh whether professional <a href="/services/condominium-management">condominium management</a> is right for your association, <a href="/contact">contact Stellar Property Management</a> for a straightforward conversation.</p>
 `,
 };

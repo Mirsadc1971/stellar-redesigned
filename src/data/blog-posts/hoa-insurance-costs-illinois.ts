@@ -4,7 +4,7 @@ export const hoaInsuranceCosts = {
   metaDescription:
     'Association insurance premiums and deductibles are rising fast in Illinois. Learn what is driving the increases, how they hit your budget and HO-6 policy, and what boards can do about it.',
   date: '2025-05-13',
-  author: 'Stellar Property Group',
+  author: 'Stellar Property Management',
   category: 'Insurance',
   readTime: '7 min read',
   excerpt:
@@ -46,6 +46,6 @@ export const hoaInsuranceCosts = {
 <p>The association's master policy covers the building and common elements. A unit owner's individual <strong>HO-6 policy</strong> covers personal property, interior improvements, personal liability, and — importantly — often the portion of a master-policy deductible that the declaration passes through to the owner. As master deductibles rise, adequate HO-6 coverage becomes more important, not less. Boards should make sure owners understand this rather than assuming the master policy covers everything.</p>
 
 <h2>What Boards Can Do</h2>
-<p>Boards are not powerless. Work with a broker who specializes in community associations, review coverage, limits, and deductibles every year rather than auto-renewing, and invest in <a href="/services/maintenance-coordination">preventive maintenance</a> to keep claims history clean. Budget realistically and fund reserves against the deductible exposure, and educate owners about HO-6 coverage. Disciplined <a href="/services/financial-management">financial management</a> turns an unpredictable renewal into a planned-for cost. To review your association's insurance and budgeting strategy, <a href="/contact">contact Stellar Property Group</a>.</p>
+<p>Boards are not powerless. Work with a broker who specializes in community associations, review coverage, limits, and deductibles every year rather than auto-renewing, and invest in <a href="/services/maintenance-coordination">preventive maintenance</a> to keep claims history clean. Budget realistically and fund reserves against the deductible exposure, and educate owners about HO-6 coverage. Disciplined <a href="/services/financial-management">financial management</a> turns an unpredictable renewal into a planned-for cost. To review your association's insurance and budgeting strategy, <a href="/contact">contact Stellar Property Management</a>.</p>
 `,
 };

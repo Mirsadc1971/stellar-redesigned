@@ -6,7 +6,7 @@ import ServiceLayout from '../../components/ui/ServiceLayout';
 export default function FinancialManagement() {
   return (
     <ServiceLayout
-      seoTitle="Association Financial Management | Stellar Property Group"
+      seoTitle="Association Financial Management | Stellar Property Management"
       seoDescription="Expert financial management for Chicago-area community associations. Budgeting, reserve studies, assessment collection, financial reporting, and audit preparation. Trusted by 42 associations since 2007."
       canonical="https://stellarpropertygroup.com/services/financial-management"
       eyebrow="Financial Services"
@@ -14,7 +14,7 @@ export default function FinancialManagement() {
       heroDescription="Sound financial stewardship is the foundation of every well-run community association. Our team delivers transparent budgeting, disciplined reserve planning, and reliable reporting that gives your board the confidence to make informed decisions."
       introHeading="Financial clarity your board can count on"
       introParagraphs={[
-        'Community association finances are not like any other business. You are managing shared resources on behalf of homeowners who expect every dollar to be spent wisely, reported transparently, and planned strategically. At Stellar Property Group, our financial management services are designed specifically for the unique demands of condo, HOA, and townhome associations in the Chicago area.',
+        'Community association finances are not like any other business. You are managing shared resources on behalf of homeowners who expect every dollar to be spent wisely, reported transparently, and planned strategically. At Stellar Property Management, our financial management services are designed specifically for the unique demands of condo, HOA, and townhome associations in the Chicago area.',
         'Our accounting team processes thousands of transactions monthly across 42 managed associations. We use industry-leading property management software to maintain real-time financial records, generate accurate reports, and provide your board with the financial visibility needed to govern effectively. Every invoice is verified, every payment is documented, and every financial report is delivered on schedule.',
         'From developing realistic annual budgets to conducting comprehensive reserve studies, from collecting assessments to preparing for annual audits, our financial management services cover the full spectrum of association accounting. We do not just track numbers; we provide the analysis and recommendations that help your board make smarter financial decisions.',
       ]}
@@ -42,7 +42,7 @@ export default function FinancialManagement() {
       deepDiveIcon={Calculator}
       deepDiveHeading="Reserve planning that prevents special assessments"
       deepDiveParagraphs={[
-        'Nothing damages community trust like an unexpected special assessment. Proper reserve planning is the single most important financial practice an association can adopt, and it is an area where many communities fall short. Stellar Property Group takes reserve planning seriously because we have seen firsthand the consequences when associations are caught unprepared for major capital expenses.',
+        'Nothing damages community trust like an unexpected special assessment. Proper reserve planning is the single most important financial practice an association can adopt, and it is an area where many communities fall short. Stellar Property Management takes reserve planning seriously because we have seen firsthand the consequences when associations are caught unprepared for major capital expenses.',
         'We coordinate professional reserve studies that inventory every major component of your property, estimate useful life and replacement costs, and establish a funding plan that builds your reserves steadily over time. Our goal is to help your association achieve at least 70% reserve funding, which the Community Associations Institute considers the threshold for a well-funded reserve.',
         'Beyond the reserve study itself, we integrate reserve planning into your annual budget process, recommend investment strategies for reserve funds, and provide regular updates on reserve adequacy as market conditions and project timelines evolve. When capital projects arise, we manage the bidding and construction process to ensure reserve dollars are spent wisely.',
       ]}

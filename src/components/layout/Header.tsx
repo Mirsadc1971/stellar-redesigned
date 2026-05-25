@@ -92,10 +92,10 @@ export default function Header() {
             </span>
             <span className="leading-tight">
               <span className="block font-display text-lg font-extrabold tracking-tight text-ink-900">
-                Stellar Property Group
+                Stellar Property Management
               </span>
               <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-600">
-                Chicago Property Management
+                Chicago, Illinois
               </span>
             </span>
           </Link>

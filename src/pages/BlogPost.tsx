@@ -33,7 +33,7 @@ export default function BlogPost() {
     author: { '@type': 'Organization', name: post.author },
     publisher: {
       '@type': 'Organization',
-      name: 'Stellar Property Group',
+      name: 'Stellar Property Management',
       url: 'https://stellarpropertygroup.com',
     },
     mainEntityOfPage: {

@@ -46,10 +46,10 @@ export default function Footer() {
               </span>
               <span className="leading-tight">
                 <span className="block font-display text-lg font-extrabold tracking-tight text-white">
-                  Stellar Property Group
+                  Stellar Property Management
                 </span>
                 <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-300">
-                  Chicago Property Management
+                  Chicago, Illinois
                 </span>
               </span>
             </Link>
@@ -146,7 +146,7 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-6 sm:flex-row">
           <p className="text-xs text-brand-200/60">
-            &copy; {year} Stellar Property Group. All rights reserved.
+            &copy; {year} Stellar Property Management. All rights reserved.
           </p>
           <ul className="flex flex-wrap items-center gap-5">
             {legalLinks.map((link) => (

@@ -86,7 +86,7 @@ export default function NeighborhoodPage() {
   const schemaMarkup = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Stellar Property Group',
+    name: 'Stellar Property Management',
     description: `Professional property management in ${neighborhood.name}, Chicago.`,
     url: `https://www.stellarpropertygroup.com/property-management-${neighborhood.slug}`,
     telephone: '+1-773-728-0652',
@@ -106,7 +106,7 @@ export default function NeighborhoodPage() {
   return (
     <>
       <Helmet>
-        <title>Property Management in {neighborhood.name} | Stellar Property Group</title>
+        <title>Property Management in {neighborhood.name} | Stellar Property Management</title>
         <meta
           name="description"
           content={`Professional condominium, HOA, and townhome management in ${neighborhood.name}, Chicago. Trusted by local boards for 29+ years. Get a free quote today.`}
