@@ -48,8 +48,8 @@ export default function Footer() {
                 <span className="block font-serif text-[1.6rem] font-bold leading-none text-white">
                   Stellar
                 </span>
-                <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-300">
-                  Property Management
+                <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-300">
+                  Chicago Property Management
                 </span>
               </span>
             </Link>
